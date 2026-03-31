@@ -1,0 +1,102 @@
+---
+const socials = [
+  { label: "Instagram", href: "https://instagram.com/aesthetic_of_perspective" },
+  { label: "Twitter", href: "https://twitter.com/Solod_Alexander" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/alexander-solod" },
+  { label: "TikTok", href: "https://tiktok.com/@fossnomade" },
+  { label: "Twitch", href: "https://twitch.tv/jutsugaming" },
+];
+---
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ASF<span class="cyan">Media</span></span>
+      <p>Nürnberger Land, Bayern · Deutschland</p>
+      <p><a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+    </div>
+    <div class="footer-socials">
+      {socials.map(s => (
+        <a href={s.href} target="_blank" rel="noopener">{s.label}</a>
+      ))}
+    </div>
+    <div class="footer-legal">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <span>© {new Date().getFullYear()} Alexander Solod</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  margin-top: 4rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.cyan { color: var(--cyan); }
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-socials a {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.footer-socials a:hover {
+  color: var(--cyan);
+  opacity: 1;
+}
+
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: right;
+}
+
+.footer-legal a {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-legal span {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-legal { text-align: center; }
+  .footer-socials { align-items: center; }
+}
+</style>

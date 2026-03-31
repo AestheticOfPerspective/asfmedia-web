@@ -1,0 +1,149 @@
+:root {
+  --cyan: #00c2ff;
+  --cyan-dim: #0099cc;
+  --bg: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-hover: #1a1a1a;
+  --border: #1e1e1e;
+  --text: #ffffff;
+  --text-muted: #888888;
+  --font-mono: 'JetBrains Mono', 'Courier Prime', 'Courier New', monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--cyan);
+  margin-bottom: 0.5rem;
+}
+
+.section-title::before {
+  content: '// ';
+  opacity: 0.4;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(0, 194, 255, 0.1);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 194, 255, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--cyan);
+  color: #000;
+  border: 2px solid var(--cyan);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--cyan);
+  opacity: 1;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--cyan);
+  border: 2px solid var(--cyan);
+}
+
+.btn-outline:hover {
+  background: var(--cyan);
+  color: #000;
+  opacity: 1;
+}
+
+.glow {
+  text-shadow: 0 0 20px rgba(0, 194, 255, 0.5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-dim);
+  border-radius: 3px;
+}

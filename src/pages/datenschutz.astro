@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Datenschutz">
+  <Nav />
+  <main class="legal-page">
+    <div class="container">
+      <h1>// Datenschutzerklärung</h1>
+
+      <section>
+        <h2>1. Datenschutz auf einen Blick</h2>
+        <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten auf dieser Website auf. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+      </section>
+
+      <section>
+        <h2>2. Verantwortliche Stelle</h2>
+        <p>Alexander Solod<br />
+        Nürnberger Land, Bayern<br />
+        E-Mail: <a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+      </section>
+
+      <section>
+        <h2>3. Hosting</h2>
+        <p>Diese Website wird auf einem eigenen Server gehostet. Der Server befindet sich in Deutschland. Eine Weitergabe Ihrer Daten an Dritte findet nicht statt.</p>
+      </section>
+
+      <section>
+        <h2>4. Cookies</h2>
+        <p>Diese Website verwendet keine Cookies und kein Tracking. Es werden keine personenbezogenen Daten automatisch gespeichert oder verarbeitet.</p>
+      </section>
+
+      <section>
+        <h2>5. Kontaktformular</h2>
+        <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+      </section>
+
+      <section>
+        <h2>6. Externe Links</h2>
+        <p>Diese Website enthält Links zu externen Plattformen (Twitch, Instagram, etc.). Für den Datenschutz auf diesen Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+      </section>
+
+      <section>
+        <h2>7. Ihre Rechte</h2>
+        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer gespeicherten Daten sowie das Recht auf Datenübertragbarkeit. Wenden Sie sich dazu an: <a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.legal-page {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--cyan);
+  margin-bottom: 3rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+</style>

@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Impressum">
+  <Nav />
+  <main class="legal-page">
+    <div class="container">
+      <h1>// Impressum</h1>
+
+      <section>
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <p>Alexander Solod<br />
+        Nürnberger Land, Bayern<br />
+        Deutschland</p>
+      </section>
+
+      <section>
+        <h2>Kontakt</h2>
+        <p>E-Mail: <a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+      </section>
+
+      <section>
+        <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+        <p>Alexander Solod<br />
+        Nürnberger Land, Bayern</p>
+      </section>
+
+      <section>
+        <h2>Haftungsausschluss</h2>
+        <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+      </section>
+
+      <section>
+        <h2>Urheberrecht</h2>
+        <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+.legal-page {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--cyan);
+  margin-bottom: 3rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+</style>
