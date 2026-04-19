@@ -1,0 +1,684 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const ctaMail = 'mailto:alexander.solod@web.de?subject=Kostenfreier%20Marketing-Check%20Anfrage';
+const ctaTelegram = 'https://t.me/fossnomade';
+
+const proofItems = [
+  { value: '6 Schritte', label: 'System statt Zufall' },
+  { value: '14 Tage', label: 'Sprint bis zum Launch' },
+  { value: 'Nuernberg + Region', label: 'Lokaler Fokus' },
+  { value: 'KPI Dashboard', label: 'Messbar und skalierbar' },
+];
+
+const systemSteps = [
+  {
+    title: 'Screening & Audit',
+    text: 'Wir analysieren Angebot, Zielgruppe, Content, Funnel und vorhandene Assets.',
+  },
+  {
+    title: 'Positionierung',
+    text: 'Wir schaerfen Message, Nutzenversprechen und Differenzierung fuer deine Nische.',
+  },
+  {
+    title: 'Content Engine',
+    text: 'Wir bauen ein wiederholbares Content-System fuer Reichweite und Vertrauen.',
+  },
+  {
+    title: 'Landing + Tracking',
+    text: 'Wir setzen Landingpage, CTA-Flow und Event-Tracking conversion-first auf.',
+  },
+  {
+    title: 'Weekly Optimierung',
+    text: 'Wir steuern nach Daten: Hooks, CTA, CVR, Leads, Bookings, Close-Rate.',
+  },
+  {
+    title: 'Skalierung',
+    text: 'Wir verdoppeln Gewinner und eliminieren Formate oder Kanaele ohne Pipeline-Wirkung.',
+  },
+];
+
+const modules = [
+  {
+    tier: 'Entry',
+    name: 'Kostenfreier Marketing-Check',
+    price: '0 EUR',
+    points: [
+      '20 Minuten Deep-Dive zu Angebot, Zielgruppe und Conversion-Engpass',
+      'Klarer 30-Tage Fahrplan mit Prioritaeten',
+      'Direkte Empfehlung fuer naechsten High-Impact Schritt',
+    ],
+  },
+  {
+    tier: 'Build',
+    name: '30-Tage Implementierungs-Sprint',
+    price: 'Projektbasiert',
+    points: [
+      'Offer-Message und Funnel-Logik aufsetzen',
+      'Landingpage + CTA + Tracking go-live machen',
+      'Erste Content-Serie fuer Reichweite und Inbound starten',
+    ],
+  },
+  {
+    tier: 'Scale',
+    name: 'Growth System Retainer',
+    price: 'Monatlich',
+    points: [
+      'Woechentlicher KPI War Room und Priorisierung',
+      'Content, Ads und Funnel als ein System steuern',
+      'Planbare Pipeline fuer Kundenanfragen oder Bewerbungen',
+    ],
+  },
+];
+
+const snapshots = [
+  {
+    title: 'Von Aktivitaet zu Pipeline',
+    before: 'Regelmaessiger Content, aber kaum qualifizierte Gespraeche.',
+    after: 'Klarer CTA-Flow mit nachvollziehbaren Check- und Booking-Raten.',
+  },
+  {
+    title: 'Von Reach zu Relevanz',
+    before: 'Views steigen, Umsatz bleibt gleich.',
+    after: 'Content wird auf Zielgruppe, Offer und Conversion-Ziel ausgerichtet.',
+  },
+  {
+    title: 'Von Einzelmassnahmen zu Maschine',
+    before: 'Ads, Social und Landing laufen getrennt und ineffizient.',
+    after: 'Ein gemeinsames System mit Datenfeedback und klaren Verantwortlichkeiten.',
+  },
+];
+
+const timeline = [
+  { day: 'Tag 0', step: 'Check buchen', detail: 'Du sendest Anfrage per Mail oder Telegram.' },
+  { day: 'Tag 1-2', step: 'Screening', detail: 'Wir mappen Ist-Zustand, Bottlenecks und Potenziale.' },
+  { day: 'Tag 3-4', step: 'Strategie', detail: 'Du bekommst Positionierung, Offer und Funnel-Roadmap.' },
+  { day: 'Tag 5-10', step: 'Build', detail: 'Landing, Tracking und erste Content-Assets werden umgesetzt.' },
+  { day: 'Tag 11-14', step: 'Launch', detail: 'System geht live, KPI-Dashboard startet, Optimierung beginnt.' },
+];
+
+const faq = [
+  {
+    q: 'Fuer wen ist der Marketing-Check?',
+    a: 'Fuer Unternehmen, Coaches und Dienstleister, die mehr qualifizierte Anfragen wollen statt nur mehr Reichweite.',
+  },
+  {
+    q: 'Brauche ich ein grosses Team?',
+    a: 'Nein. Wir starten lean und bauen nur die Bausteine, die in deinem Setup sofort Wirkung haben.',
+  },
+  {
+    q: 'Wie schnell sehe ich erste Signale?',
+    a: 'Erste messbare Signale entstehen oft in 2-4 Wochen. Ein stabiles System braucht meist 8-12 Wochen.',
+  },
+  {
+    q: 'Ist bezahlte Werbung Pflicht?',
+    a: 'Nein. Organic und Paid werden passend zu Ziel, Budget und Reifegrad kombiniert.',
+  },
+  {
+    q: 'Was ist das konkrete Ergebnis des Checks?',
+    a: 'Du gehst mit einem klaren Prioritaetenplan raus: was jetzt bauen, was spaeter testen, was sofort stoppen.',
+  },
+];
+---
+
+<Layout
+  title="Marketing-Check"
+  description="Kostenfreier Marketing-Check fuer Unternehmen, Coaches und Dienstleister in Nuernberg und Umgebung. Conversion-first statt Zufall."
+>
+  <Nav />
+
+  <main class="marketing-page">
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="container hero-inner">
+        <span class="chip hero-tag">// Nuernberg Growth System</span>
+        <h1>Planbare Kundenanfragen und Bewerbungen statt Marketing-Chaos.</h1>
+        <p class="hero-sub">
+          Wir bauen dir eine Marketing-Maschine aus Content, Conversion und klaren Prozessen,
+          damit aus Reichweite echte Gespraeche und Umsatz werden.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={ctaMail}>Kostenfreien Check sichern</a>
+          <a class="btn btn-ghost" href={ctaTelegram} target="_blank" rel="noopener">Auf Telegram schreiben</a>
+        </div>
+        <p class="hero-note">Fokusregion: Nuernberg, Fuerth, Erlangen, Nuernberger Land</p>
+      </div>
+    </section>
+
+    <section class="proof-strip">
+      <div class="container proof-grid">
+        {proofItems.map((item) => (
+          <article class="proof-item">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Wenn das bekannt klingt, ist der Check fuer dich</h2>
+        <p class="section-subtitle">Die haeufigsten Bremsen in lokalen B2B-Setups</p>
+        <div class="problem-grid">
+          <article class="card">
+            <h3>Content ohne Pipeline</h3>
+            <p>Du postest regelmaessig, aber hast keinen stabilen Fluss zu qualifizierten Gespraechen.</p>
+          </article>
+          <article class="card">
+            <h3>Traffic ohne Conversion</h3>
+            <p>Du bekommst Klicks, aber Landing, CTA und Follow-up greifen nicht sauber ineinander.</p>
+          </article>
+          <article class="card">
+            <h3>Aktionen ohne System</h3>
+            <p>Viele Ideen, wenig Priorisierung. Keine klare Reihenfolge, was zuerst Wirkung bringt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-panel">
+      <div class="container">
+        <h2 class="section-title">Das 6-Schritte System</h2>
+        <p class="section-subtitle">Von Analyse bis Skalierung - klar, messbar, wiederholbar</p>
+        <div class="system-grid">
+          {systemSteps.map((step, index) => (
+            <article class="card step-card">
+              <span class="step-index">0{index + 1}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Service Module</h2>
+        <p class="section-subtitle">Ein Offer-Layer fuer jede Reifestufe</p>
+        <div class="module-grid">
+          {modules.map((item) => (
+            <article class="card module-card">
+              <span class="module-tier">{item.tier}</span>
+              <h3>{item.name}</h3>
+              <p class="module-price">{item.price}</p>
+              <ul>
+                {item.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section section-panel">
+      <div class="container">
+        <h2 class="section-title">Typische Fortschrittsbilder</h2>
+        <p class="section-subtitle">Was sich veraendert, wenn Marketing als System gebaut wird</p>
+        <div class="snapshot-grid">
+          {snapshots.map((snap) => (
+            <article class="card snapshot-card">
+              <h3>{snap.title}</h3>
+              <div>
+                <p class="label">Vorher</p>
+                <p>{snap.before}</p>
+              </div>
+              <div>
+                <p class="label">Nachher</p>
+                <p>{snap.after}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="streaming" class="section">
+      <div class="container">
+        <h2 class="section-title">Was nach deiner Anfrage passiert</h2>
+        <p class="section-subtitle">Klare Timeline statt endloser Theorie-Calls</p>
+        <div class="timeline">
+          {timeline.map((item) => (
+            <article class="timeline-item card">
+              <p class="timeline-day">{item.day}</p>
+              <h3>{item.step}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-panel">
+      <div class="container faq-wrap">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">Direkte Antworten auf die wichtigsten Fragen</p>
+        <div class="faq-list">
+          {faq.map((item) => (
+            <details class="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container founder-card card">
+        <div>
+          <p class="label">Founder POV</p>
+          <h2>Local trust. Digital execution. Null Bullshit.</h2>
+          <p>
+            ASFMedia steht fuer klare Umsetzung: kein Marketing-Theater, sondern ein
+            System, das fuer dein Geschaeft arbeitet. Wir kombinieren Content, Funnel und
+            KPI-Steuerung in einer Struktur, die du verstehen und weiterfuehren kannst.
+          </p>
+          <p class="founder-meta">Standort: Nuernberger Land, Bayern</p>
+        </div>
+        <div class="founder-points">
+          <span class="chip">System First</span>
+          <span class="chip">Conversion First</span>
+          <span class="chip">Local B2B Focus</span>
+          <span class="chip">Execution > Hype</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section final-cta">
+      <div class="container cta-box">
+        <h2>Bereit fuer einen klaren Marketing-Fahrplan?</h2>
+        <p>
+          Sicher dir jetzt den kostenfreien Marketing-Check und wir identifizieren
+          deinen groessten Hebel fuer die naechsten 30 Tage.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href={ctaMail}>Check jetzt anfragen</a>
+          <a class="btn btn-ghost" href={ctaTelegram} target="_blank" rel="noopener">Direkt auf Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.marketing-page {
+  padding-top: 4rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 420px;
+  background:
+    radial-gradient(circle at 20% 35%, rgba(0, 194, 255, 0.2), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(0, 194, 255, 0.12), transparent 50%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 194, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 194, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  margin-bottom: 1.25rem;
+}
+
+h1 {
+  max-width: 900px;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  max-width: 720px;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-note {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.proof-strip {
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 194, 255, 0.03);
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.proof-item {
+  padding: 1.2rem 1rem;
+  border-right: 1px solid var(--border);
+}
+
+.proof-item:last-child {
+  border-right: none;
+}
+
+.proof-item strong {
+  display: block;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.proof-item span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.section-panel {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(0, 194, 255, 0.02), rgba(0, 194, 255, 0));
+}
+
+.problem-grid,
+.system-grid,
+.module-grid,
+.snapshot-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.problem-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.problem-grid h3,
+.step-card h3,
+.module-card h3,
+.snapshot-card h3,
+.timeline-item h3 {
+  color: var(--cyan);
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+.problem-grid p,
+.step-card p,
+.module-card p,
+.snapshot-card p,
+.timeline-item p,
+.founder-card p,
+.faq-item p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.system-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.step-card {
+  position: relative;
+  padding-top: 2.7rem;
+}
+
+.step-index {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  color: rgba(0, 194, 255, 0.45);
+  font-size: 0.85rem;
+  border: 1px solid rgba(0, 194, 255, 0.25);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+}
+
+.module-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.module-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.module-tier {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  border: 1px solid rgba(0, 194, 255, 0.3);
+  background: rgba(0, 194, 255, 0.1);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+}
+
+.module-price {
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+.module-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.module-card li {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.module-card li::before {
+  content: '>'; 
+  color: var(--cyan);
+  position: absolute;
+  left: 0;
+}
+
+.snapshot-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.snapshot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  font-family: var(--font-mono);
+  color: var(--cyan);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.timeline-item {
+  border-top: 2px solid var(--cyan);
+}
+
+.timeline-day {
+  font-family: var(--font-mono);
+  color: var(--ink-muted);
+  margin-bottom: 0.55rem;
+  font-size: 0.82rem;
+}
+
+.faq-wrap {
+  max-width: 900px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 0.9rem 1rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+}
+
+.faq-item p {
+  margin-top: 0.7rem;
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.founder-card h2 {
+  color: var(--cyan);
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.founder-meta {
+  margin-top: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.founder-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.final-cta {
+  padding-top: 2rem;
+}
+
+.cta-box {
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2.4rem 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(0, 194, 255, 0.09), rgba(0, 194, 255, 0.02)),
+    var(--bg-card);
+}
+
+.cta-box h2 {
+  color: var(--cyan);
+  margin-bottom: 0.6rem;
+}
+
+.cta-box p {
+  color: var(--text-muted);
+  max-width: 760px;
+  margin: 0 auto 1.4rem;
+}
+
+.cta-box .hero-cta {
+  justify-content: center;
+}
+
+@media (max-width: 980px) {
+  .proof-grid,
+  .timeline,
+  .problem-grid,
+  .system-grid,
+  .module-grid,
+  .snapshot-grid,
+  .founder-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .proof-item:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .marketing-page {
+    padding-top: 3.5rem;
+  }
+
+  .hero {
+    padding-top: 3rem;
+  }
+
+  .proof-grid,
+  .problem-grid,
+  .system-grid,
+  .module-grid,
+  .snapshot-grid,
+  .timeline,
+  .founder-card {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .proof-item:last-child {
+    border-bottom: none;
+  }
+}
+</style>

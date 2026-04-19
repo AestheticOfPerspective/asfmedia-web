@@ -4,84 +4,125 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Datenschutz">
+<Layout title="Datenschutz" description="Datenschutzhinweise fuer ultramind.one.">
   <Nav />
-  <main class="legal-page">
+
+  <main class="page-shell legal-page">
     <div class="container">
-      <h1>// Datenschutzerklärung</h1>
+      <p class="eyebrow">Rechtliches</p>
+      <h1 class="display-title">Datenschutzerklaerung</h1>
 
-      <section>
-        <h2>1. Datenschutz auf einen Blick</h2>
-        <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten auf dieser Website auf. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+      <article class="panel legal-note">
+        <p>
+          Hinweis: Diese Datenschutzerklaerung ist eine inhaltliche Vorlage und ersetzt keine Rechtsberatung.
+          Bitte vor Veroeffentlichung durch eine rechtlich gepruefte Version ersetzen oder ergaenzen.
+        </p>
+      </article>
+
+      <section class="legal-block">
+        <h2>1. Verantwortliche Stelle</h2>
+        <p>
+          [Name / Firma]<br />
+          [Anschrift]<br />
+          E-Mail: <a href="mailto:hello@ultramind.one">hello@ultramind.one</a>
+        </p>
       </section>
 
-      <section>
-        <h2>2. Verantwortliche Stelle</h2>
-        <p>Alexander Solod<br />
-        Nürnberger Land, Bayern<br />
-        E-Mail: <a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+      <section class="legal-block">
+        <h2>2. Verarbeitung personenbezogener Daten</h2>
+        <p>
+          Personenbezogene Daten werden nur verarbeitet, wenn dies zur Bereitstellung der Website,
+          zur Beantwortung von Anfragen oder aufgrund gesetzlicher Vorgaben erforderlich ist.
+        </p>
       </section>
 
-      <section>
-        <h2>3. Hosting</h2>
-        <p>Diese Website wird auf einem eigenen Server gehostet. Der Server befindet sich in Deutschland. Eine Weitergabe Ihrer Daten an Dritte findet nicht statt.</p>
+      <section class="legal-block">
+        <h2>3. Hosting und Server-Logfiles</h2>
+        <p>
+          Beim Aufruf dieser Website koennen technische Daten (z. B. IP-Adresse, Zeitpunkt, aufgerufene Seite)
+          in Server-Logfiles gespeichert werden. Die Verarbeitung erfolgt zur Sicherstellung des technischen Betriebs.
+        </p>
       </section>
 
-      <section>
-        <h2>4. Cookies</h2>
-        <p>Diese Website verwendet keine Cookies und kein Tracking. Es werden keine personenbezogenen Daten automatisch gespeichert oder verarbeitet.</p>
+      <section class="legal-block">
+        <h2>4. Kontaktaufnahme</h2>
+        <p>
+          Wenn Sie per E-Mail oder Formular Kontakt aufnehmen, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert.
+          Eine Weitergabe an Dritte erfolgt nicht ohne rechtliche Grundlage oder ausdrueckliche Einwilligung.
+        </p>
       </section>
 
-      <section>
-        <h2>5. Kontaktformular</h2>
-        <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+      <section class="legal-block">
+        <h2>5. Cookies und Tracking</h2>
+        <p>
+          Diese Vorlage sieht standardmaessig kein Marketing-Tracking vor.
+          Falls spaeter Analyse- oder Trackingdienste eingebunden werden, sind diese hier transparent zu dokumentieren.
+        </p>
       </section>
 
-      <section>
+      <section class="legal-block">
         <h2>6. Externe Links</h2>
-        <p>Diese Website enthält Links zu externen Plattformen (Twitch, Instagram, etc.). Für den Datenschutz auf diesen Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        <p>
+          Diese Website kann Links zu externen Diensten enthalten.
+          Fuer Inhalte und Datenschutzpraktiken der verlinkten Seiten sind ausschliesslich deren Betreiber verantwortlich.
+        </p>
       </section>
 
-      <section>
+      <section class="legal-block">
         <h2>7. Ihre Rechte</h2>
-        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer gespeicherten Daten sowie das Recht auf Datenübertragbarkeit. Wenden Sie sich dazu an: <a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+        <p>
+          Betroffene Personen haben Rechte auf Auskunft, Berichtigung, Loeschung, Einschraenkung,
+          Datenuertragbarkeit und Widerspruch entsprechend den geltenden Datenschutzgesetzen.
+        </p>
+      </section>
+
+      <section class="legal-block">
+        <h2>8. Aktualitaet</h2>
+        <p>
+          Diese Datenschutzerklaerung wird bei inhaltlichen oder rechtlichen Aenderungen angepasst.
+          Stand: April 2026.
+        </p>
       </section>
     </div>
   </main>
+
   <Footer />
 </Layout>
 
 <style>
 .legal-page {
-  padding-top: 8rem;
-  padding-bottom: 4rem;
-  min-height: 100vh;
+  padding-bottom: 3.5rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  color: var(--cyan);
-  margin-bottom: 3rem;
+.legal-note {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid rgba(141, 91, 51, 0.5);
 }
 
-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border);
+.legal-note p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
 }
 
-section:last-child {
+.legal-block {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.legal-block:last-child {
   border-bottom: none;
 }
 
-h2 {
-  font-size: 1.1rem;
-  color: var(--text);
-  margin-bottom: 0.75rem;
+.legal-block h2 {
+  font-size: 1.28rem;
+  color: var(--ink);
+  margin-bottom: 0.48rem;
 }
 
-p {
-  color: var(--text-muted);
-  line-height: 1.8;
+.legal-block p {
+  color: var(--ink-soft);
+  line-height: 1.76;
 }
 </style>

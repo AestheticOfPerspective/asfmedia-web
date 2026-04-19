@@ -1,102 +1,124 @@
 ---
-const socials = [
-  { label: "Instagram", href: "https://instagram.com/aesthetic_of_perspective" },
-  { label: "Twitter", href: "https://twitter.com/Solod_Alexander" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/alexander-solod" },
-  { label: "TikTok", href: "https://tiktok.com/@fossnomade" },
-  { label: "Twitch", href: "https://twitch.tv/jutsugaming" },
+const quickLinks = [
+  { label: 'Start', href: '/' },
+  { label: 'Module', href: '/module' },
+  { label: 'Templates', href: '/templates' },
+  { label: 'Projekt', href: '/about' },
+  { label: 'Kontakt', href: '/contact' },
+];
+
+const projectLinks = [
+  { label: 'Session Brief', href: '/about#session-brief' },
+  { label: 'Roadmap', href: '/module#roadmap' },
+  { label: 'Early Access', href: '/contact#early-access' },
 ];
 ---
 
-<footer>
-  <div class="container footer-inner">
+<footer class="site-footer">
+  <div class="container footer-inner panel">
     <div class="footer-brand">
-      <span class="logo">ASF<span class="cyan">Media</span></span>
-      <p>Nürnberger Land, Bayern · Deutschland</p>
-      <p><a href="mailto:alexander.solod@web.de">alexander.solod@web.de</a></p>
+      <span class="logo">ultramind.one</span>
+      <p>
+        Interaktive Lernreise fuer die 8 Intelligenzraeume nach Gardner.
+        Entwickelt als modulares Experience-System.
+      </p>
+      <a href="mailto:hello@ultramind.one">hello@ultramind.one</a>
     </div>
-    <div class="footer-socials">
-      {socials.map(s => (
-        <a href={s.href} target="_blank" rel="noopener">{s.label}</a>
+
+    <div class="footer-links">
+      <h4>Navigieren</h4>
+      {quickLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
       ))}
     </div>
-    <div class="footer-legal">
+
+    <div class="footer-links">
+      <h4>Projekt</h4>
+      {projectLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+
+    <div class="footer-meta">
       <a href="/impressum">Impressum</a>
       <a href="/datenschutz">Datenschutz</a>
-      <span>© {new Date().getFullYear()} Alexander Solod</span>
+      <span>© {new Date().getFullYear()} ultramind.one</span>
     </div>
   </div>
 </footer>
 
 <style>
-footer {
-  border-top: 1px solid var(--border);
-  padding: 3rem 0;
-  margin-top: 4rem;
+.site-footer {
+  padding: 2.6rem 0 2.2rem;
 }
 
 .footer-inner {
+  padding: 1.6rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
-  align-items: start;
+  grid-template-columns: 1.4fr 1fr 1fr auto;
+  gap: 1.4rem;
 }
 
 .logo {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+.footer-brand p {
+  margin: 0.8rem 0;
+  max-width: 28ch;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-brand a {
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
-.cyan { color: var(--cyan); }
-
-.footer-brand p {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-}
-
-.footer-socials {
+.footer-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.42rem;
 }
 
-.footer-socials a {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  transition: color 0.2s;
+.footer-links h4,
+.footer-meta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--ink-muted);
 }
 
-.footer-socials a:hover {
-  color: var(--cyan);
-  opacity: 1;
+.footer-links a,
+.footer-meta a,
+.footer-meta span {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
 }
 
-.footer-legal {
+.footer-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  text-align: right;
+  gap: 0.48rem;
+  align-items: flex-start;
 }
 
-.footer-legal a {
-  color: var(--text-muted);
-  font-size: 0.85rem;
+@media (max-width: 980px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
 }
 
-.footer-legal span {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .footer-inner {
     grid-template-columns: 1fr;
-    text-align: center;
   }
-  .footer-legal { text-align: center; }
-  .footer-socials { align-items: center; }
 }
 </style>

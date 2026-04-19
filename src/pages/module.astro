@@ -1,0 +1,270 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const modules = [
+  {
+    id: '01',
+    title: 'Koerperlich-Kinaesthetische Intelligenz',
+    state: 'Live',
+    summary: 'Proof of Concept mit interaktivem Quiz, Score-Auswertung und sofortigem Lernfeedback.',
+    focus: ['Erleben', 'Reflexion', 'Feedback'],
+  },
+  {
+    id: '02',
+    title: 'Logisch-Mathematische Intelligenz',
+    state: 'In Planung',
+    summary: 'Mustererkennung, strukturierte Problemloesung und Denkstrategien in praxisnahen Aufgaben.',
+    focus: ['Muster', 'Logik', 'Transfer'],
+  },
+  {
+    id: '03',
+    title: 'Musikalisch-Rhythmische Intelligenz',
+    state: 'In Planung',
+    summary: 'Rhythmus, Timing und auditives Denken als interaktive Wahrnehmungsuebungen.',
+    focus: ['Rhythmus', 'Klang', 'Timing'],
+  },
+  {
+    id: '04',
+    title: 'Sprachlich-Linguistische Intelligenz',
+    state: 'In Planung',
+    summary: 'Wortpraezision, Ausdruck und Bedeutungsarbeit mit spielerischen Formaten.',
+    focus: ['Sprache', 'Bedeutung', 'Ausdruck'],
+  },
+  {
+    id: '05',
+    title: 'Raeumlich-Visuelle Intelligenz',
+    state: 'In Planung',
+    summary: 'Raumdenken und Visualisierung mit Aufgaben zu Perspektive, Struktur und Orientierung.',
+    focus: ['Raum', 'Visualisierung', 'Form'],
+  },
+  {
+    id: '06',
+    title: 'Interpersonale Intelligenz',
+    state: 'In Planung',
+    summary: 'Soziale Wahrnehmung, Teamdynamik und Kommunikation in echten Entscheidungssituationen.',
+    focus: ['Empathie', 'Beziehung', 'Dialog'],
+  },
+  {
+    id: '07',
+    title: 'Intrapersonale Intelligenz',
+    state: 'In Planung',
+    summary: 'Selbstbeobachtung, innere Klarheit und bewusste Selbststeuerung.',
+    focus: ['Reflexion', 'Selbstbild', 'Intention'],
+  },
+  {
+    id: '08',
+    title: 'Naturalistische Intelligenz',
+    state: 'In Planung',
+    summary: 'Muster in natuerlichen Systemen erkennen, vergleichen und einordnen.',
+    focus: ['Beobachtung', 'Muster', 'Systemik'],
+  },
+];
+
+const stack = [
+  {
+    title: 'Module als eigenstaendige Experiences',
+    text: 'Jedes Modul kann einzeln genutzt und getestet werden, ohne auf den Hub warten zu muessen.',
+  },
+  {
+    title: 'Gemeinsames Designsystem',
+    text: 'Alle Module folgen denselben visuellen und interaktiven Grundregeln fuer Wiedererkennbarkeit.',
+  },
+  {
+    title: 'Hub als verbindende Schicht',
+    text: 'Der Hub ordnet Fortschritt, Scores und Lernpfade in einer zentralen Oberflaeche.',
+  },
+];
+
+const milestones = [
+  { quarter: 'Sprint jetzt', text: 'Modul 02 inhaltlich und technisch priorisieren.' },
+  { quarter: 'Sprint +1', text: 'Template-System fuer alle Modulseiten finalisieren.' },
+  { quarter: 'Sprint +2', text: 'Hub-Startseite mit Modulstatus und Einstieg bauen.' },
+  { quarter: 'Sprint +3', text: 'Erste Version von Fortschritts-Speicherung vorbereiten.' },
+];
+---
+
+<Layout
+  title="Module"
+  description="Uebersicht der acht Intelligenzmodule von ultramind.one inklusive Status, Fokus und Roadmap."
+>
+  <Nav />
+
+  <main class="page-shell">
+    <section class="section-tight">
+      <div class="container">
+        <p class="eyebrow">Module Board</p>
+        <h1 class="display-title">Acht Intelligenzraeume, ein konsistentes Lernerlebnis.</h1>
+        <p class="section-lead">
+          Modul 01 laeuft bereits live. Die folgenden Module werden in klarer Reihenfolge entwickelt,
+          damit Erfahrung, Didaktik und Technik gemeinsam wachsen.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container module-grid">
+        {modules.map((module) => (
+          <article class="card module-card">
+            <div class="module-head">
+              <span class="chip">Modul {module.id}</span>
+              <span class:list={['state-pill', module.state === 'Live' && 'state-live']}>
+                {module.state}
+              </span>
+            </div>
+            <h2>{module.title}</h2>
+            <p>{module.summary}</p>
+            <div class="chip-row">
+              {module.focus.map((focus) => (
+                <span class="chip">{focus}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section panel-strip">
+      <div class="container">
+        <p class="eyebrow">Systemarchitektur</p>
+        <h2 class="section-title">So bleibt das Projekt skalierbar.</h2>
+        <div class="grid-3 stack-grid">
+          {stack.map((item) => (
+            <article class="card stack-card">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Meilensteine</p>
+        <h2 class="section-title">Naechste Schritte bis zum Hub.</h2>
+        <div class="grid-4 milestone-grid">
+          {milestones.map((item) => (
+            <article class="card milestone-card">
+              <span class="chip">{item.quarter}</span>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="panel cta-panel">
+          <p class="eyebrow">Nikita x ultramind.one</p>
+          <h2>Du willst Modul 02 als naechstes live bringen?</h2>
+          <p>
+            Dann priorisieren wir jetzt Content-Set, Fragetypen und die finale Seitenstruktur.
+            So kann jedes weitere Modul schnell nach demselben Standard ausgerollt werden.
+          </p>
+          <a class="btn btn-primary" href="/contact">Build Sprint planen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.module-card h2 {
+  font-size: 1.24rem;
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+}
+
+.module-card p {
+  font-size: 0.95rem;
+}
+
+.module-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin-bottom: 0.95rem;
+}
+
+.chip-row {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.state-pill {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 0.24rem 0.58rem;
+}
+
+.state-live {
+  background: rgba(47, 122, 79, 0.11);
+  border-color: rgba(47, 122, 79, 0.45);
+  color: var(--success);
+}
+
+.panel-strip {
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.58), rgba(232, 222, 206, 0.22));
+  border-top: 1px solid rgba(141, 91, 51, 0.13);
+  border-bottom: 1px solid rgba(141, 91, 51, 0.13);
+}
+
+.stack-grid,
+.milestone-grid {
+  margin-top: 1.1rem;
+}
+
+.stack-card h3 {
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.milestone-card p {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.cta-panel {
+  padding: 2rem;
+}
+
+.cta-panel h2 {
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  margin: 0.6rem 0;
+  color: var(--ink);
+}
+
+.cta-panel p {
+  margin-bottom: 1.2rem;
+  max-width: 740px;
+}
+
+@media (max-width: 860px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-panel {
+    padding: 1.25rem;
+  }
+}
+</style>

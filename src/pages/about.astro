@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const principles = [
+  {
+    title: 'Spielerisch lernen',
+    text: 'Menschen lernen tiefer, wenn sie Inhalte aktiv erleben statt nur konsumieren.',
+  },
+  {
+    title: 'Klarheit vor Buzzwords',
+    text: 'Jedes Modul soll konkret helfen: verstehen, ausprobieren, reflektieren.',
+  },
+  {
+    title: 'Modulare Evolution',
+    text: 'Nicht alles auf einmal. Lieber ein stabiles Modul nach dem anderen in hoher Qualitaet.',
+  },
+];
+
+const roles = [
+  {
+    role: 'Nikita',
+    scope: 'Vision, Projektfuehrung und inhaltliche Priorisierung der Lernreise.',
+  },
+  {
+    role: 'Fossnomade',
+    scope: 'Produktstruktur, technische Umsetzung und operativer Build-Rhythmus.',
+  },
+  {
+    role: 'Gemeinsames Ziel',
+    scope: 'Eine Plattform, die Menschen ihre Staerken erleben laesst statt sie nur zu klassifizieren.',
+  },
+];
+
+const timeline = [
+  {
+    stage: 'Session 01',
+    text: 'Projektidee und Modulstruktur gesetzt.',
+  },
+  {
+    stage: 'Session 02',
+    text: 'Modul 01 als Proof of Concept abgeschlossen und reviewt.',
+  },
+  {
+    stage: 'Naechste Sessions',
+    text: 'Module 02-08 und Hub-Rahmen in iterativen Sprints aufbauen.',
+  },
+];
+---
+
+<Layout
+  title="Projekt"
+  description="Hintergrund, Vision und Arbeitsweise von ultramind.one - dem modularen Lernprojekt von Nikita und Fossnomade."
+>
+  <Nav />
+
+  <main class="page-shell">
+    <section class="section-tight" id="session-brief">
+      <div class="container">
+        <p class="eyebrow">Projektkontext</p>
+        <h1 class="display-title">ultramind.one ist eine Lernreise fuer menschliche Vielfalt.</h1>
+        <p class="section-lead">
+          Ausgangspunkt war eine Session mit klarer Leitidee: Intelligenz ist nicht eine einzige Sache,
+          sondern ein Spektrum aus unterschiedlichen Staerken. Daraus entsteht ein modulares Lernuniversum.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split-grid">
+        <article class="panel intro-panel">
+          <p class="eyebrow">Vision</p>
+          <h2>Von der Theorie zur erlebbaren Praxis.</h2>
+          <p>
+            Die Plattform will nicht nur Wissen vermitteln, sondern Selbstwahrnehmung und Entwicklung
+            anstossen. Jede Intelligenzform bekommt einen eigenen Erlebnisraum mit klarer Lernlogik.
+          </p>
+        </article>
+
+        <article class="panel intro-panel">
+          <p class="eyebrow">Mission</p>
+          <h2>Ein System, das Menschen staerkt.</h2>
+          <p>
+            ultramind.one soll Bildung, Coaching und Selbsterkenntnis verbinden: nahbar, visuell,
+            interaktiv und mit einem starken Fokus auf echte Anwendung.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section strip">
+      <div class="container">
+        <p class="eyebrow">Arbeitsprinzipien</p>
+        <h2 class="section-title">So bleibt das Projekt hochwertig und handhabbar.</h2>
+        <div class="grid-3 principle-grid">
+          {principles.map((principle) => (
+            <article class="card principle-card">
+              <h3>{principle.title}</h3>
+              <p>{principle.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-3 role-grid">
+        {roles.map((entry) => (
+          <article class="card role-card">
+            <span class="chip">Rolle</span>
+            <h3>{entry.role}</h3>
+            <p>{entry.scope}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="panel timeline-panel">
+          <p class="eyebrow">Projektverlauf</p>
+          <h2>Vom Briefing zum skalierbaren Build.</h2>
+          <div class="timeline-grid">
+            {timeline.map((item) => (
+              <article class="card timeline-card">
+                <span class="chip">{item.stage}</span>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.intro-panel {
+  padding: 1.4rem;
+}
+
+.intro-panel h2 {
+  margin: 0.65rem 0;
+  font-size: 2rem;
+  color: var(--ink);
+}
+
+.strip {
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.52), rgba(232, 222, 206, 0.24));
+  border-top: 1px solid rgba(141, 91, 51, 0.15);
+  border-bottom: 1px solid rgba(141, 91, 51, 0.15);
+}
+
+.principle-grid,
+.role-grid {
+  margin-top: 1.1rem;
+}
+
+.principle-card h3,
+.role-card h3 {
+  color: var(--ink);
+  margin: 0.6rem 0 0.45rem;
+}
+
+.timeline-panel {
+  padding: 1.8rem;
+}
+
+.timeline-panel h2 {
+  margin: 0.65rem 0 1rem;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--ink);
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.timeline-card p {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .split-grid,
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-panel {
+    padding: 1.2rem;
+  }
+}
+</style>

@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const templates = [
+  {
+    title: 'Landing Template',
+    forWho: 'Fuer Launch, Kampagnen und Partnerschaften',
+    blocks: ['Hero mit klarer Positionierung', 'Storyline mit Problem-Loesung-Spannung', 'Vertrauenssignale und Conversion-CTA'],
+  },
+  {
+    title: 'Modul Experience Template',
+    forWho: 'Fuer jedes Intelligenz-Modul',
+    blocks: ['Modul-Intro und Lernziel', 'Interaktiver Aufgabenbereich', 'Feedback, Score und naechste Schritte'],
+  },
+  {
+    title: 'Hub Dashboard Template',
+    forWho: 'Fuer den zentralen Einstieg',
+    blocks: ['Modulstatus und Fortschrittsanzeige', 'Empfohlene naechste Sessions', 'Sammelansicht fuer Profile und Ergebnisse'],
+  },
+];
+
+const principles = [
+  {
+    title: 'Konsistenz vor Komplexitaet',
+    text: 'Alle Vorlagen folgen derselben visuellen Sprache, damit sich Nutzer sofort orientieren koennen.',
+  },
+  {
+    title: 'Inhalt zuerst',
+    text: 'Komponenten sind so gebaut, dass Copy, Lernlogik und Interaktion klar priorisiert werden.',
+  },
+  {
+    title: 'Schneller Rollout',
+    text: 'Neue Seiten entstehen durch Kombination bestehender Bloecke statt durch jedes Mal neues Design.',
+  },
+];
+
+const deliverables = [
+  'Design Tokens fuer Farben, Typografie und Abstaende',
+  'Bausteine fuer Hero, Module, CTA und Footer',
+  'Wiederverwendbare Seitenstrukturen in Astro',
+  'Mobile Varianten fuer alle Kernkomponenten',
+];
+---
+
+<Layout
+  title="Templates"
+  description="Website- und Modulvorlagen fuer ultramind.one: strukturiert, wiederverwendbar und launch-orientiert."
+>
+  <Nav />
+
+  <main class="page-shell">
+    <section class="section-tight">
+      <div class="container">
+        <p class="eyebrow">Template Library</p>
+        <h1 class="display-title">Vorlagen, die aus Ideen direkt umsetzbare Seiten machen.</h1>
+        <p class="section-lead">
+          Damit ultramind.one schnell wachsen kann, basiert jede neue Seite auf klaren Vorlagen.
+          Das spart Zeit, haelt den Look konsistent und beschleunigt den Modul-Rollout.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container template-grid">
+        {templates.map((template) => (
+          <article class="card template-card">
+            <span class="chip">Template</span>
+            <h2>{template.title}</h2>
+            <p class="audience">{template.forWho}</p>
+            <ul class="list-clean template-list">
+              {template.blocks.map((block) => (
+                <li>{block}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section strip">
+      <div class="container">
+        <p class="eyebrow">Bauprinzipien</p>
+        <h2 class="section-title">Drei Regeln fuer saubere Skalierung.</h2>
+        <div class="grid-3 principle-grid">
+          {principles.map((principle) => (
+            <article class="card principle-card">
+              <h3>{principle.title}</h3>
+              <p>{principle.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="panel deliverables">
+          <p class="eyebrow">Was enthalten ist</p>
+          <h2>Template-Pack fuer den laufenden Ausbau.</h2>
+          <ul class="list-clean deliverables-list">
+            {deliverables.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a href="/contact" class="btn btn-primary">Template Sprint anfragen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.template-card h2 {
+  margin-top: 0.7rem;
+  margin-bottom: 0.45rem;
+  color: var(--ink);
+  font-size: 1.3rem;
+}
+
+.template-card .audience {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+}
+
+.template-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.strip {
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.52), rgba(232, 222, 206, 0.22));
+  border-top: 1px solid rgba(141, 91, 51, 0.14);
+  border-bottom: 1px solid rgba(141, 91, 51, 0.14);
+}
+
+.principle-grid {
+  margin-top: 1.1rem;
+}
+
+.principle-card h3 {
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.deliverables {
+  padding: 2rem;
+}
+
+.deliverables h2 {
+  margin: 0.62rem 0 0.85rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+}
+
+.deliverables-list {
+  display: grid;
+  gap: 0.56rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 950px) {
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deliverables {
+    padding: 1.3rem;
+  }
+}
+</style>
