@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    category: 'Kreation',
+    title: 'Creative Direction & Illustration',
+    items: [
+      'Brand Identity und Visual Konzepte',
+      'Illustrationen und Character Design',
+      'Logo Design und Designsysteme',
+      'Mood Boards, Decks und Pitch Unterlagen',
+    ],
+    note: 'Ob Erstprojekt oder Rebrand — ich entwickle visuelle Sprachen, die sitzen.',
+  },
+  {
+    category: 'Media',
+    title: 'Video Editing & Content Produktion',
+    items: [
+      'Video Editing (Gaming, Commentary, Social)',
+      'Thumbnail Design und Grafikpakete',
+      'Stream Overlays und Channel Branding',
+      'Skripte, Struktur und Content Planung',
+    ],
+    note: 'Content der nicht wie Content aussieht. Authentisch, schnell und mit Eigencharakter.',
+  },
+  {
+    category: 'Tech',
+    title: 'Web, Bots & Automation',
+    items: [
+      'Websites mit Astro / statischen Generatoren',
+      'Telegram Bots und API-Integrationen',
+      'Python Scripts und Automatisierung',
+      'AI-Tool Setup und Workflow Optimierung',
+    ],
+    note: 'Ich baue was gebraucht wird. Kein Over-Engineering, kein Vendor Lock-in.',
+  },
+  {
+    category: 'Consulting',
+    title: 'Digital Setup & Strategie',
+    items: [
+      'Tool-Stack Beratung (AI, Cloud, Automation)',
+      'Workflow Design für Creator und kleine Teams',
+      'Nextcloud, Docker und Self-Hosting Setup',
+      'Digital Brand Positionierung',
+    ],
+    note: 'Ich helfe beim Setup der Infrastruktur, nicht nur beim Endprodukt.',
+  },
+];
+
+const process = [
+  {
+    step: '01',
+    title: 'Briefing & Discovery',
+    text: 'Wir klären Ziel, Scope, Timeline und Budget in einem kurzen Call oder per Nachricht.',
+  },
+  {
+    step: '02',
+    title: 'Konzept & Pitch',
+    text: 'Ich entwickle einen konkreten Ansatz und präsentiere ihn — kein Blindflug.',
+  },
+  {
+    step: '03',
+    title: 'Build & Iterate',
+    text: 'Umsetzen, Feedback einbauen, liefern. Kurze Zyklen, klare Kommunikation.',
+  },
+  {
+    step: '04',
+    title: 'Abgabe & Support',
+    text: 'Übergabe mit allem was du brauchst. Follow-up bei Bedarf.',
+  },
+];
+---
+
+<Layout
+  title="Services"
+  description="ASFMedia Services — Creative Direction, Illustration, Video Editing, Web Builds, Bots und Consulting."
+>
+  <Nav />
+
+  <main class="page-shell">
+    <section class="section-tight">
+      <div class="container">
+        <p class="eyebrow">Services & Leistungen</p>
+        <h1 class="display-title">Meisterdienstleister für digitale Kreation.</h1>
+        <p class="section-lead">
+          Creative Direction, Medienproduktion, Tech-Builds und Beratung.
+          Einzeln buchbar oder als Paket — je nach Projekt und Ziel.
+        </p>
+        <div class="hero-cta">
+          <a href="/contact" class="btn btn-primary">Jetzt anfragen →</a>
+          <a href="/contact" class="btn btn-ghost">Discovery Call starten</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-stripe">
+      <div class="container">
+        <p class="eyebrow">Leistungsübersicht</p>
+        <h2 class="section-title">Was du bekommst.</h2>
+        <div class="services-grid">
+          {services.map((s) => (
+            <article class="card service-card">
+              <span class="chip">{s.category}</span>
+              <h3>{s.title}</h3>
+              <ul class="list-clean service-list">
+                {s.items.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="service-note">{s.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Arbeitsweise</p>
+        <h2 class="section-title">Wie ein Projekt abläuft.</h2>
+        <div class="process-grid">
+          {process.map((p) => (
+            <article class="card process-card">
+              <span class="step-number">{p.step}</span>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-stripe">
+      <div class="container">
+        <div class="panel cta-panel">
+          <p class="eyebrow">Projekt starten</p>
+          <h2>Bereit? Dann lass uns reden.</h2>
+          <p>
+            Kein Formular-Labyrinth. Schreib einfach was du brauchst —
+            ich melde mich schnell und konkret zurück.
+          </p>
+          <div class="cta-actions">
+            <a href="/contact" class="btn btn-primary">Kontakt aufnehmen</a>
+            <a href="mailto:hello@asfmedia.org" class="btn btn-ghost">Direkte Mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+
+.section-stripe {
+  background: rgba(30, 232, 208, 0.02);
+  border-top: 1px solid rgba(30, 232, 208, 0.07);
+  border-bottom: 1px solid rgba(30, 232, 208, 0.07);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.35rem;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.service-card h3 {
+  color: var(--ink);
+  font-size: 1.15rem;
+}
+
+.service-list {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.service-list li {
+  font-size: 0.93rem;
+}
+
+.service-note {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--cyan-border);
+  padding-top: 0.7rem;
+  margin-top: auto;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.35rem;
+}
+
+.process-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.step-number {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--cyan);
+  opacity: 0.45;
+  line-height: 1;
+}
+
+.process-card h3 {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.process-card p { font-size: 0.92rem; }
+
+.cta-panel { padding: 2.2rem; }
+
+.cta-panel h2 {
+  margin: 0.7rem 0 0.8rem;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--ink);
+}
+
+.cta-panel p { max-width: 620px; }
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .services-grid,
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .cta-panel { padding: 1.4rem; }
+}
+</style>

@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const channels = [
+  {
+    tag: 'Gaming · Community',
+    name: 'Jutsu Gaming',
+    desc: 'Gaming Content, Streams und Community. Ich play, kommentiere und entertaine — mit eigenem Stil und Energie.',
+    status: 'Aktiv',
+    href: null,
+  },
+  {
+    tag: 'Music · Self-Hosted',
+    name: 'Navidrome',
+    desc: 'Eigener Music Server via Subsonic API auf Docker. Alle Tracks lokal — kein Streaming-Abo, kein Tracking.',
+    status: 'Online',
+    href: null,
+  },
+  {
+    tag: 'Cloud · Privacy',
+    name: 'cloud.asfmedia.org',
+    desc: 'Private Nextcloud Instanz. Dateien, Kalender, Kontakte und Vault-Sync unter eigener Kontrolle.',
+    status: 'Online',
+    href: 'https://cloud.asfmedia.org',
+  },
+];
+
+const content = [
+  {
+    title: 'Video Editing',
+    text: 'Gaming Clips, Montages, Commentary Videos und Social Content. Schnitt, Pacing und Storytelling.',
+  },
+  {
+    title: 'Commentary',
+    text: 'Live und post-produced. Eigene Perspektive, direkte Ansagen, kein generisches Filler-Content.',
+  },
+  {
+    title: 'Illustration für Media',
+    text: 'Thumbnails, Overlays, Emotes, Sticker und Custom Grafiken für Streams und Social.',
+  },
+  {
+    title: 'Brand für Creator',
+    text: 'Channel Identity, Logo, Farbsystem, Templates — damit alles konsistent wirkt.',
+  },
+];
+---
+
+<Layout
+  title="Media"
+  description="ASFMedia — Jutsu Gaming, Navidrome, Cloud und Content Produktion. Das Ecosystem von Fossnomade."
+>
+  <Nav />
+
+  <main class="page-shell">
+    <section class="section-tight">
+      <div class="container">
+        <p class="eyebrow">Media · Ecosystem</p>
+        <h1 class="display-title">Eigene Infrastruktur. Eigener Content.</h1>
+        <p class="section-lead">
+          Von der privaten Cloud bis zum Gaming Stream — ASFMedia ist kein Label, sondern ein System.
+          Alles unter Kontrolle, alles mit Eigencharakter.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-stripe">
+      <div class="container">
+        <p class="eyebrow">Das Ecosystem</p>
+        <h2 class="section-title">Channels & Services.</h2>
+        <div class="channels-grid">
+          {channels.map((c) => (
+            <article class="card channel-card">
+              <div class="channel-head">
+                <span class="chip">{c.tag}</span>
+                <span class="status-pill">{c.status}</span>
+              </div>
+              <h3>{c.name}</h3>
+              <p>{c.desc}</p>
+              {c.href && (
+                <a href={c.href} target="_blank" rel="noopener" class="card-link">Öffnen →</a>
+              )}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Content Services</p>
+        <h2 class="section-title">Was ich für Creator und Brands mache.</h2>
+        <p class="section-lead">
+          Du brauchst jemanden, der Content versteht — von innen heraus.
+          Kein Freelancer-Template, sondern Creator-Erfahrung mit handwerklichem Anspruch.
+        </p>
+        <div class="grid-2 card-grid">
+          {content.map((c) => (
+            <article class="card content-card">
+              <h3>{c.title}</h3>
+              <p>{c.text}</p>
+            </article>
+          ))}
+        </div>
+        <div class="section-cta">
+          <a href="/contact" class="btn btn-primary">Projekt anfragen</a>
+          <a href="/services" class="btn btn-ghost">Alle Services</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.section-stripe {
+  background: rgba(30, 232, 208, 0.02);
+  border-top: 1px solid rgba(30, 232, 208, 0.07);
+  border-bottom: 1px solid rgba(30, 232, 208, 0.07);
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.35rem;
+}
+
+.channel-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.channel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.channel-card h3 {
+  color: var(--ink);
+  font-size: 1.2rem;
+}
+
+.channel-card p { font-size: 0.93rem; flex: 1; }
+
+.status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--success);
+  background: rgba(34, 197, 94, 0.08);
+  white-space: nowrap;
+}
+
+.card-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.card-link:hover { color: var(--amber); }
+
+.card-grid { margin-top: 1.35rem; }
+
+.content-card h3 {
+  color: var(--ink);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.content-card p { font-size: 0.95rem; }
+
+.section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .channels-grid { grid-template-columns: 1fr; }
+}
+</style>

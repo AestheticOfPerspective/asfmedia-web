@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Datenschutz" description="Datenschutzhinweise fuer ultramind.one.">
+<Layout title="Datenschutz" description="Datenschutzerklaerung von ASFMedia — Alexander Solod, Nürnberger Land, Bayern.">
   <Nav />
 
   <main class="page-shell legal-page">
@@ -12,19 +12,12 @@ import Footer from '../components/Footer.astro';
       <p class="eyebrow">Rechtliches</p>
       <h1 class="display-title">Datenschutzerklaerung</h1>
 
-      <article class="panel legal-note">
-        <p>
-          Hinweis: Diese Datenschutzerklaerung ist eine inhaltliche Vorlage und ersetzt keine Rechtsberatung.
-          Bitte vor Veroeffentlichung durch eine rechtlich gepruefte Version ersetzen oder ergaenzen.
-        </p>
-      </article>
-
       <section class="legal-block">
         <h2>1. Verantwortliche Stelle</h2>
         <p>
-          [Name / Firma]<br />
-          [Anschrift]<br />
-          E-Mail: <a href="mailto:hello@ultramind.one">hello@ultramind.one</a>
+          Alexander Solod<br />
+          Nuernberger Land, Bayern, Deutschland<br />
+          E-Mail: <a href="mailto:hello@asfmedia.org">hello@asfmedia.org</a>
         </p>
       </section>
 
@@ -47,13 +40,23 @@ import Footer from '../components/Footer.astro';
       <section class="legal-block">
         <h2>4. Kontaktaufnahme</h2>
         <p>
-          Wenn Sie per E-Mail oder Formular Kontakt aufnehmen, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert.
-          Eine Weitergabe an Dritte erfolgt nicht ohne rechtliche Grundlage oder ausdrueckliche Einwilligung.
+          Wenn Sie per E-Mail oder ueber das Kontaktformular eine Anfrage senden, werden Ihre Angaben zur
+          Bearbeitung der Anfrage verarbeitet.
         </p>
       </section>
 
       <section class="legal-block">
-        <h2>5. Cookies und Tracking</h2>
+        <h2>5. Kontaktformular (FormSubmit)</h2>
+        <p>
+          Das Kontaktformular nutzt den externen Formulardienst FormSubmit (formsubmit.co), damit Anfragen
+          zuverlaessig zugestellt werden koennen. Dabei werden die von Ihnen eingegebenen Daten
+          (z. B. Name, E-Mail, Betreff und Nachricht) an den Dienst uebermittelt und per E-Mail an
+          uns weitergeleitet.
+        </p>
+      </section>
+
+      <section class="legal-block">
+        <h2>6. Cookies und Tracking</h2>
         <p>
           Diese Vorlage sieht standardmaessig kein Marketing-Tracking vor.
           Falls spaeter Analyse- oder Trackingdienste eingebunden werden, sind diese hier transparent zu dokumentieren.
@@ -61,7 +64,7 @@ import Footer from '../components/Footer.astro';
       </section>
 
       <section class="legal-block">
-        <h2>6. Externe Links</h2>
+        <h2>7. Externe Links</h2>
         <p>
           Diese Website kann Links zu externen Diensten enthalten.
           Fuer Inhalte und Datenschutzpraktiken der verlinkten Seiten sind ausschliesslich deren Betreiber verantwortlich.
@@ -69,7 +72,7 @@ import Footer from '../components/Footer.astro';
       </section>
 
       <section class="legal-block">
-        <h2>7. Ihre Rechte</h2>
+        <h2>8. Ihre Rechte</h2>
         <p>
           Betroffene Personen haben Rechte auf Auskunft, Berichtigung, Loeschung, Einschraenkung,
           Datenuertragbarkeit und Widerspruch entsprechend den geltenden Datenschutzgesetzen.
@@ -77,7 +80,7 @@ import Footer from '../components/Footer.astro';
       </section>
 
       <section class="legal-block">
-        <h2>8. Aktualitaet</h2>
+        <h2>9. Aktualitaet</h2>
         <p>
           Diese Datenschutzerklaerung wird bei inhaltlichen oder rechtlichen Aenderungen angepasst.
           Stand: April 2026.
@@ -92,18 +95,6 @@ import Footer from '../components/Footer.astro';
 <style>
 .legal-page {
   padding-bottom: 3.5rem;
-}
-
-.legal-note {
-  margin-top: 1rem;
-  margin-bottom: 1.2rem;
-  padding: 1rem 1.1rem;
-  border-left: 4px solid rgba(141, 91, 51, 0.5);
-}
-
-.legal-note p {
-  color: var(--ink-soft);
-  font-size: 0.94rem;
 }
 
 .legal-block {

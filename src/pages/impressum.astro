@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Impressum" description="Impressum von ultramind.one.">
+<Layout title="Impressum" description="Impressum von ASFMedia — Alexander Solod, Nürnberger Land, Bayern.">
   <Nav />
 
   <main class="page-shell legal-page">
@@ -12,41 +12,32 @@ import Footer from '../components/Footer.astro';
       <p class="eyebrow">Rechtliches</p>
       <h1 class="display-title">Impressum</h1>
 
-      <article class="panel legal-note">
-        <p>
-          Hinweis: Diese Seite ist als Projektvorlage aufgebaut.
-          Vor dem Livegang bitte Betreiberdaten, ladungsfaehige Anschrift und alle Pflichtangaben rechtssicher ergaenzen.
-        </p>
-      </article>
-
       <section class="legal-block">
         <h2>Angaben gemaess § 5 TMG</h2>
         <p>
-          [Name / Firma]<br />
-          [Strasse und Hausnummer]<br />
-          [PLZ Ort]<br />
-          [Land]
+          Alexander Solod<br />
+          Nuernberger Land, Bayern<br />
+          Deutschland
         </p>
       </section>
 
       <section class="legal-block">
         <h2>Kontakt</h2>
         <p>
-          E-Mail: <a href="mailto:hello@ultramind.one">hello@ultramind.one</a><br />
-          Telefon: [Telefonnummer]
+          E-Mail: <a href="mailto:hello@asfmedia.org">hello@asfmedia.org</a>
         </p>
       </section>
 
       <section class="legal-block">
         <h2>Vertretungsberechtigte Person</h2>
-        <p>[Name der verantwortlichen Person]</p>
+        <p>Alexander Solod</p>
       </section>
 
       <section class="legal-block">
         <h2>Verantwortlich fuer den Inhalt nach § 18 Abs. 2 MStV</h2>
         <p>
-          [Name]<br />
-          [Anschrift]
+          Alexander Solod<br />
+          Nuernberger Land, Bayern
         </p>
       </section>
 
@@ -65,6 +56,14 @@ import Footer from '../components/Footer.astro';
           Vervielfaeltigung, Bearbeitung und Verwertung ausserhalb der Grenzen des Urheberrechts beduerfen der Zustimmung.
         </p>
       </section>
+
+      <section class="legal-block">
+        <h2>Streitbeilegung</h2>
+        <p>
+          Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor
+          einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
+      </section>
     </div>
   </main>
 
@@ -74,18 +73,6 @@ import Footer from '../components/Footer.astro';
 <style>
 .legal-page {
   padding-bottom: 3.5rem;
-}
-
-.legal-note {
-  margin-top: 1rem;
-  margin-bottom: 1.2rem;
-  padding: 1rem 1.1rem;
-  border-left: 4px solid rgba(141, 91, 51, 0.5);
-}
-
-.legal-note p {
-  color: var(--ink-soft);
-  font-size: 0.94rem;
 }
 
 .legal-block {

@@ -1,43 +1,37 @@
 # AGENTS.md
 
 ## Scope
-- This repo is a single Astro site (`asfmedia-web`), not a monorepo.
-- Package manager is npm (`package-lock.json` present); use npm commands, not pnpm/yarn.
-- Required runtime is Node `>=22.12.0` (`package.json` engines).
+- Single Astro site (`asfmedia-web`), not a monorepo.
+- Use npm only (`package-lock.json` is authoritative).
+- Node runtime must satisfy `>=22.12.0` (`package.json` engines).
 
-## Source Of Truth
-- `README.md` is the default Astro starter text and is not project-specific.
-- Trust executable config instead: `package.json`, `astro.config.mjs`, `.github/workflows/deploy.yml`.
-
-## Canonical Commands
-- `npm install` first (required before any scripts).
-- `npm run dev` starts Astro dev server (default `localhost:4321`).
-- `npm run astro -- check` is the closest thing to type/content validation (no dedicated lint/test scripts exist).
-- `npm run build` creates production output in `dist/`.
-- `npm run preview` serves the built site from `dist/`.
+## Verified Commands
+- `npm install` (required before any script).
+- `npm run dev` (Astro dev server on `localhost:4321`).
+- `npm run astro -- check` (only repo-provided validation/type check).
+- `npm run build` (production build to `dist/`).
+- `npm run preview` (serve built output).
+- Preferred verification before handoff: `npm run astro -- check && npm run build`.
 
 ## Deployment Facts (GitHub Pages)
-- CI workflow: `.github/workflows/deploy.yml`.
-- Deployment triggers on push to `master` (not `main`).
-- CI uses Node 22, runs `npm install` then `npm run build`, and uploads `dist/`.
-- Domain is configured in two places and must stay in sync:
-  - `astro.config.mjs` -> `site: 'https://asfmedia.org'`
-  - `public/CNAME` -> `asfmedia.org`
+- CI: `.github/workflows/deploy.yml`.
+- Deploys on push to `master` (not `main`).
+- CI sequence is fixed: Node 22 -> `npm install` -> `npm run build` -> upload `dist/`.
+- Canonical host must match in both files:
+  - `astro.config.mjs` (`site`, currently `https://web.asfmedia.org`)
+  - `public/CNAME` (currently `web.asfmedia.org`)
 
 ## Code Map
-- Routes are file-based under `src/pages/`:
-  - `index.astro` -> `/`
-  - `marketing-check.astro` -> `/marketing-check`
-  - `impressum.astro` -> `/impressum`
-  - `datenschutz.astro` -> `/datenschutz`
-- Shared shell is `src/layouts/Layout.astro` (global metadata, Google Fonts, `html lang="de"`, global CSS import).
-- Shared UI blocks are `src/components/Nav.astro` and `src/components/Footer.astro`.
-- Design tokens and base styles live in `src/styles/global.css`; page-level layout styles are mostly inline in each `.astro` file.
+- Shared shell: `src/layouts/Layout.astro` (global head/meta/fonts + global CSS import).
+- Shared UI: `src/components/Nav.astro` and `src/components/Footer.astro`.
+- Design tokens/base styles: `src/styles/global.css`; page-specific layout styles are inline in each page.
+- Routes live in `src/pages/`: `index`, `about`, `contact`, `dev`, `media`, `services`, `templates`, `module`, `marketing-check`, `impressum`, `datenschutz`.
 
-## Non-obvious Gotchas
-- `src/components/Nav.astro` uses hash anchors (`#projects`, `#streaming`, `#portfolio`, `#about`, `#contact`) globally.
-- `src/pages/marketing-check.astro` defines all five target ids, but `src/pages/index.astro` still has no `id="portfolio"` section.
-- `impressum.astro` and `datenschutz.astro` also render `Nav`, so hash links there do not target local sections.
-- When changing nav anchors, update route sections and anchor ids together to avoid silent broken in-page navigation.
-- `dist/` and `.astro/` are generated artifacts; do not hand-edit them.
-- Site copy/legal text is German; preserve language and legal-page structure unless the task explicitly changes content strategy.
+## High-Signal Gotchas
+- `README.md` is still the Astro starter template; do not treat it as project truth.
+- Navigation links are duplicated in both `src/components/Nav.astro` and `src/components/Footer.astro`; keep both in sync when adding/removing routes.
+- Domain/brand strings are currently mixed (`web.asfmedia.org`, `asfmedia.org`, `ultramind.one`) across pages. When editing contact/legal/SEO text, normalize all hardcoded hosts together.
+- `src/pages/contact.astro` form flow is hardcoded (`formsubmit` action + `_next` redirect); domain changes must update these fields explicitly.
+- If palette tokens change in `src/styles/global.css`, recheck contact form input contrast in `src/pages/contact.astro`.
+- `dist/` and `.astro/` are generated; never hand-edit.
+- Legal pages and core copy are German; preserve legal structure unless explicitly asked to rewrite content.

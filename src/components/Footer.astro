@@ -1,48 +1,50 @@
 ---
-const quickLinks = [
+const navLinks = [
   { label: 'Start', href: '/' },
-  { label: 'Module', href: '/module' },
-  { label: 'Templates', href: '/templates' },
-  { label: 'Projekt', href: '/about' },
+  { label: 'Dev Journey', href: '/dev' },
+  { label: 'Media', href: '/media' },
+  { label: 'Services', href: '/services' },
   { label: 'Kontakt', href: '/contact' },
 ];
 
-const projectLinks = [
-  { label: 'Session Brief', href: '/about#session-brief' },
-  { label: 'Roadmap', href: '/module#roadmap' },
-  { label: 'Early Access', href: '/contact#early-access' },
+const ecosystem = [
+  { label: 'cloud.asfmedia.org', href: 'https://cloud.asfmedia.org' },
+  { label: 'Jutsu Gaming', href: '#' },
+  { label: 'Navidrome', href: '#' },
 ];
 ---
 
 <footer class="site-footer">
   <div class="container footer-inner panel">
     <div class="footer-brand">
-      <span class="logo">ultramind.one</span>
-      <p>
-        Interaktive Lernreise fuer die 8 Intelligenzraeume nach Gardner.
-        Entwickelt als modulares Experience-System.
+      <span class="logo">
+        <span class="logo-brand">ASF</span><em class="logo-name">media</em>
+      </span>
+      <p class="footer-tagline">
+        Creative Direction · Illustration · Dev · Content.<br />
+        Alles unter einer Handschrift. Fossnomade.
       </p>
-      <a href="mailto:hello@ultramind.one">hello@ultramind.one</a>
+      <a href="mailto:hello@asfmedia.org">hello@asfmedia.org</a>
     </div>
 
     <div class="footer-links">
-      <h4>Navigieren</h4>
-      {quickLinks.map((link) => (
+      <h4>Navigation</h4>
+      {navLinks.map((link) => (
         <a href={link.href}>{link.label}</a>
       ))}
     </div>
 
     <div class="footer-links">
-      <h4>Projekt</h4>
-      {projectLinks.map((link) => (
-        <a href={link.href}>{link.label}</a>
+      <h4>Ecosystem</h4>
+      {ecosystem.map((link) => (
+        <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{link.label}</a>
       ))}
     </div>
 
     <div class="footer-meta">
       <a href="/impressum">Impressum</a>
       <a href="/datenschutz">Datenschutz</a>
-      <span>© {new Date().getFullYear()} ultramind.one</span>
+      <span>© {new Date().getFullYear()} ASFMedia</span>
     </div>
   </div>
 </footer>
@@ -60,21 +62,40 @@ const projectLinks = [
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.1rem;
 }
 
-.footer-brand p {
+.logo-brand {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.footer-tagline {
   margin: 0.8rem 0;
   max-width: 28ch;
   font-size: 0.9rem;
   line-height: 1.6;
+  color: var(--ink-soft);
 }
 
 .footer-brand a {
   font-size: 0.9rem;
   font-weight: 700;
+  color: var(--cyan);
 }
 
 .footer-links {
@@ -83,20 +104,22 @@ const projectLinks = [
   gap: 0.42rem;
 }
 
-.footer-links h4,
-.footer-meta {
+.footer-links h4 {
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-size: 0.72rem;
-  color: var(--ink-muted);
+  color: var(--cyan);
+  margin-bottom: 0.3rem;
 }
 
-.footer-links a,
-.footer-meta a,
-.footer-meta span {
+.footer-links a {
   font-size: 0.86rem;
   color: var(--ink-soft);
+}
+
+.footer-links a:hover {
+  color: var(--amber);
 }
 
 .footer-meta {
@@ -104,6 +127,29 @@ const projectLinks = [
   flex-direction: column;
   gap: 0.48rem;
   align-items: flex-start;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--cyan);
+}
+
+.footer-meta a {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.footer-meta a:hover {
+  color: var(--amber);
+}
+
+.footer-meta span {
+  color: var(--ink-muted);
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 @media (max-width: 980px) {

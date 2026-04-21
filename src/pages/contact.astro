@@ -6,34 +6,34 @@ import Footer from '../components/Footer.astro';
 const contactOptions = [
   {
     label: 'Projekt-Mail',
-    value: 'hello@ultramind.one',
-    note: 'Fuer Kooperationen, Build-Sprints und strategische Anfragen.',
-    href: 'mailto:hello@ultramind.one?subject=ultramind.one%20Projektanfrage',
+    value: 'hello@asfmedia.org',
+    note: 'Fuer Kooperationen, Build-Sprints und kreative Anfragen.',
+    href: 'mailto:hello@asfmedia.org?subject=ASFMedia%20Projektanfrage',
   },
   {
     label: 'Telegram',
-    value: '@ultramind_one',
+    value: '@fossnomade',
     note: 'Kurze Abstimmungen und asynchrone Sprint-Kommunikation.',
-    href: 'https://t.me/ultramind_one',
+    href: 'https://t.me/fossnomade',
   },
   {
-    label: 'Session Call',
-    value: '30 Minuten Discovery',
-    note: 'Kickoff fuer Positionierung, Scope und Prioritaeten.',
-    href: 'mailto:hello@ultramind.one?subject=ultramind.one%20Discovery%20Call',
+    label: 'Discovery Call',
+    value: '30 Minuten Briefing',
+    note: 'Kickoff fuer Scope, Ziel und erstes Konzept.',
+    href: 'mailto:hello@asfmedia.org?subject=ASFMedia%20Discovery%20Call',
   },
 ];
 
 const prep = [
-  'Welches Modul oder welcher Bereich ist gerade Prioritaet?',
-  'Was soll in den naechsten 14 Tagen live gehen?',
-  'Welche Inhalte sind bereits vorhanden und welche fehlen?',
+  'Was soll entstehen — Illustration, Site, Bot, Video oder Beratung?',
+  'Gibt es ein konkretes Ziel oder eine Deadline?',
+  'Welches Budget oder welcher Rahmen steht zur Verfuegung?',
 ];
 ---
 
 <Layout
   title="Kontakt"
-  description="Kontakt zu ultramind.one fuer Build-Sprints, Partnerschaften und Early-Access Gespräche."
+  description="Kontakt zu ASFMedia — Creative Direction, Illustration, Video, Tech und Consulting. Fossnomade, Nuernberger Land."
 >
   <Nav />
 
@@ -41,10 +41,10 @@ const prep = [
     <section class="section-tight">
       <div class="container">
         <p class="eyebrow">Kontakt & Early Access</p>
-        <h1 class="display-title">Lass uns ultramind.one zusammen auf den naechsten Level bringen.</h1>
+        <h1 class="display-title">Lass uns was Solides bauen.</h1>
         <p class="section-lead">
-          Wenn du Build, Templates oder Modul-Rollout beschleunigen willst,
-          starten wir mit einem fokussierten Discovery-Gespraech.
+          Illustration, Site, Bot, Video oder Strategie — schreib mir was du brauchst
+          und wir finden den schnellsten Weg zum Ergebnis.
         </p>
       </div>
     </section>
@@ -64,15 +64,27 @@ const prep = [
 
         <aside class="panel contact-panel">
           <p class="eyebrow">Schnellanfrage</p>
-          <h2>Schick uns direkt deinen Fokus fuer den naechsten Sprint.</h2>
-          <form action="mailto:hello@ultramind.one" method="get" enctype="text/plain">
+          <h2>Schick mir direkt was du brauchst.</h2>
+          <form action="https://formsubmit.co/hello@asfmedia.org" method="POST">
+            <input type="hidden" name="_subject" value="Neue ASFMedia Anfrage" />
+            <input type="hidden" name="_next" value="https://web.asfmedia.org/contact?sent=1" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Dein Name" required />
+
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" name="email" placeholder="du@beispiel.de" required />
+
             <label for="subject">Betreff</label>
             <input id="subject" type="text" name="subject" placeholder="z. B. Modul 02 Build" required />
 
             <label for="body">Nachricht</label>
             <textarea
               id="body"
-              name="body"
+              name="message"
               rows="6"
               placeholder="Was soll als naechstes live gehen?"
               required
@@ -80,6 +92,9 @@ const prep = [
 
             <button class="btn btn-primary" type="submit">Anfrage senden</button>
           </form>
+          <p class="form-note">
+            Nach dem Senden wirst du direkt auf die Kontaktseite zurueckgeleitet.
+          </p>
         </aside>
       </div>
     </section>
@@ -87,7 +102,7 @@ const prep = [
     <section class="section strip">
       <div class="container prep-wrap">
         <p class="eyebrow">Kickoff Vorbereitung</p>
-        <h2 class="section-title">Wenn du diese drei Punkte vorbereitest, wird der Start deutlich schneller.</h2>
+        <h2 class="section-title">Wenn du diese drei Fragen im Kopf hast, wird der Start deutlich schneller.</h2>
         <ul class="list-clean prep-list">
           {prep.map((item) => (
             <li>{item}</li>
@@ -171,6 +186,20 @@ textarea:focus {
 
 textarea {
   resize: vertical;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-note {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
 }
 
 .strip {

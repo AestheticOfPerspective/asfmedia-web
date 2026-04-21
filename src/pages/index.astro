@@ -3,217 +3,221 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
+const personas = [
+  {
+    tag: 'Kreation',
+    title: 'Creative Director & Illustrator',
+    text: 'Visuelle Konzepte, Brand Identity, Character Design und Illustrationen. Ich denke in Bildern — und bringe sie in Form.',
+    link: { label: 'Services ansehen', href: '/services' },
+  },
+  {
+    tag: 'Development',
+    title: 'Developer auf Lernreise',
+    text: 'Python, Bots, API-Integrationen, Web-Builds. Ich lerne täglich, baue was ich lerne und pushe in Produktion.',
+    link: { label: 'Dev Journey', href: '/dev' },
+  },
+  {
+    tag: 'Content',
+    title: 'Commentary & Media Creator',
+    text: 'Jutsu Gaming, Streaming, Editing und Commentary. Ich bringe Energie, Perspektive und einen eigenen Ton.',
+    link: { label: 'Media & Ecosystem', href: '/media' },
+  },
+];
+
 const metrics = [
-  { value: '8', label: 'Intelligenzraeume' },
-  { value: '01', label: 'Modul bereits spielbar' },
-  { value: 'Q2 2026', label: 'Hub-Prototyp geplant' },
+  { value: '3×', label: 'Personas aktiv' },
+  { value: 'Python', label: 'Lernreise 2026' },
+  { value: '2+', label: 'Projekte live' },
+  { value: 'Bayern', label: 'Nürnberger Land' },
 ];
 
-const pillars = [
+const ecosystem = [
   {
-    title: 'Wissen wird Erfahrung',
-    text: 'Jede Intelligenzform wird als eigenstaendiges Erlebnis gebaut, nicht als trockene Textseite.',
+    tag: 'Cloud',
+    name: 'cloud.asfmedia.org',
+    desc: 'Private Nextcloud — Dateien, Sync, Kollaboration.',
+    status: 'Online',
+    href: 'https://cloud.asfmedia.org',
   },
   {
-    title: 'Modular statt Monolith',
-    text: 'Module funktionieren einzeln und wachsen spaeter in ein gemeinsames Dashboard hinein.',
+    tag: 'Music',
+    name: 'Navidrome',
+    desc: 'Eigener Music Server via Subsonic API auf Docker.',
+    status: 'Online',
+    href: null,
   },
   {
-    title: 'Design mit Fokus',
-    text: 'Klare Typografie, ruhige Premium-Aesthetik und spielerische Interaktion statt visueller Ueberladung.',
-  },
-];
-
-const roadmap = [
-  { id: '01', name: 'Koerperlich-Kinaesthetisch', state: 'Live', note: 'Interaktives Quiz inklusive Feedback und Score-Logik.' },
-  { id: '02', name: 'Logisch-Mathematisch', state: 'In Planung', note: 'Strukturierte Aufgaben, Mustererkennung und Transferfragen.' },
-  { id: '03', name: 'Musikalisch-Rhythmisch', state: 'In Planung', note: 'Rhythmus, Klangmuster und Wahrnehmungsaufgaben.' },
-  { id: '04', name: 'Sprachlich-Linguistisch', state: 'In Planung', note: 'Wort, Ausdruck und Bedeutungsraum mit interaktiven Uebungen.' },
-  { id: '05', name: 'Raeumlich-Visuell', state: 'In Planung', note: 'Raumvorstellung, Bilddenken und visuelle Loesungswege.' },
-  { id: '06', name: 'Interpersonal', state: 'In Planung', note: 'Teamdynamik, Empathie und kommunikative Entscheidungslogik.' },
-  { id: '07', name: 'Intrapersonal', state: 'In Planung', note: 'Selbstwahrnehmung, Reflexion und innere Muster.' },
-  { id: '08', name: 'Naturalistisch', state: 'In Planung', note: 'Beobachten, Ordnen und Muster in natuerlichen Systemen.' },
-];
-
-const templateCards = [
-  {
-    name: 'Landing Blueprint',
-    text: 'Hero, Storyline, Trust-Signale und klare Conversion in einem wiederverwendbaren Aufbau.',
-    tags: ['Launch', 'Pitch', 'Conversion'],
+    tag: 'Community',
+    name: 'Jutsu Gaming',
+    desc: 'Streaming, Gaming-Community, Commentary Content.',
+    status: 'Aktiv',
+    href: null,
   },
   {
-    name: 'Modul Template',
-    text: 'Standardstruktur fuer jedes Intelligenz-Modul mit Intro, Quiz, Feedback und Ergebnisansicht.',
-    tags: ['Lernen', 'Quiz', 'Scoring'],
-  },
-  {
-    name: 'Hub Dashboard',
-    text: 'Zentraler Einstieg fuer Fortschritt, Modul-Status und spaetere Empfehlungen.',
-    tags: ['Roadmap', 'Tracking', 'Growth'],
+    tag: 'AI Stack',
+    name: 'Claude · Ollama · Copilot',
+    desc: 'AI-Tool-Chain für Entwicklung und kreative Arbeit.',
+    status: 'Running',
+    href: null,
   },
 ];
 
-const sprintPlan = [
+const services = [
   {
-    step: 'Positionierung fixieren',
-    detail: 'Ton, Zielgruppe, Value Proposition und inhaltliche Leitplanken abstimmen.',
+    label: 'Creative Direction',
+    text: 'Brand Identity, Visual Konzepte, Illustration und Designsysteme.',
   },
   {
-    step: 'Designsystem setzen',
-    detail: 'Farben, Typografie, Komponenten und Motion-Bausteine verbindlich definieren.',
+    label: 'Media Produktion',
+    text: 'Video Editing, Content Creation, Commentary, Streaming Assets.',
   },
   {
-    step: 'Site + Templates bauen',
-    detail: 'Landingpage, Modul-Uebersicht und wiederverwendbare Seitenvorlagen umsetzen.',
-  },
-  {
-    step: 'Modul-Rollout starten',
-    detail: 'Modul 02 priorisieren und den Hub-Rahmen fuer die naechsten Sprints vorbereiten.',
+    label: 'Tech & Automation',
+    text: 'Web Builds, Bots, Python Scripts, AI Integration.',
   },
 ];
 ---
 
 <Layout
-  title="ultramind.one"
-  description="ultramind.one ist ein modulares Lernuniversum, das die 8 Intelligenzformen als interaktive Erfahrungen erlebbar macht."
+  title="ASFMedia"
+  description="Fossnomade / ASFMedia — Creative Director, Illustrator, Developer und Digital Creator. Creative Direction, Media, Tech und alles dazwischen."
 >
   <Nav />
 
   <main class="page-shell">
+    <!-- HERO -->
     <section class="hero section-tight">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Nikita x Fossnomade · Projektstatus 2026</p>
-          <h1 class="display-title">Intelligenz wird hier erlebbar, nicht nur erklaert.</h1>
+          <p class="eyebrow">ASFMedia · Nürnberger Land · 2026</p>
+          <h1 class="display-title">Ich kreiere,<br />code und<br />kommentiere.</h1>
           <p class="section-lead">
-            ultramind.one baut eine modulare Lernreise durch die acht Intelligenzformen nach Gardner.
-            Statt Frontalunterricht entstehen interaktive Raume, in denen Menschen sich selbst besser verstehen.
+            Creative Director, Illustrator, Entwickler im Aufbau und Commentary Guy.
+            Egal ob Illustration, Python-Script oder Stream — alles trägt dieselbe Handschrift.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="/module">Module entdecken</a>
-            <a class="btn btn-ghost" href="/contact">Projektgespraech starten</a>
+            <a class="btn btn-primary" href="/services">Services entdecken</a>
+            <a class="btn btn-ghost" href="/dev">Dev Journey →</a>
           </div>
           <div class="chip-row">
-            <span class="chip">Deutsch zuerst</span>
-            <span class="chip">Clean Premium Design</span>
-            <span class="chip">Vanilla Quiz x Astro Site</span>
+            <span class="chip">Creative Director</span>
+            <span class="chip">Illustrator</span>
+            <span class="chip">Python</span>
+            <span class="chip">Jutsu Gaming</span>
+            <span class="chip">Commentary</span>
           </div>
         </div>
 
         <aside class="panel hero-card">
-          <p class="eyebrow">Proof of Concept</p>
-          <h2>Modul 01 ist live und validiert den Ansatz.</h2>
-          <ul class="list-clean hero-list">
-            <li>Themenlogik abgeschlossen</li>
-            <li>Interaktives Quiz bereits spielbar</li>
-            <li>Feedback-Mechanik inklusive Erklaerungen</li>
-            <li>Score-Auswertung und Ergebnis-Readout aktiv</li>
+          <p class="eyebrow">Status · Live</p>
+          <h2>Das Command Center läuft.</h2>
+          <ul class="status-list">
+            <li><span class="status-dot online"></span>cloud.asfmedia.org</li>
+            <li><span class="status-dot online"></span>Navidrome Music</li>
+            <li><span class="status-dot active"></span>Python Journey</li>
+            <li><span class="status-dot active"></span>AI Stack</li>
+            <li><span class="status-dot active"></span>ASFMedia Site</li>
           </ul>
-          <a href="/module" class="hero-link">Zum Modul-Board</a>
+          <a href="/services" class="hero-link">Alle Services ansehen →</a>
         </aside>
       </div>
 
       <div class="container metric-grid">
-        {metrics.map((metric) => (
+        {metrics.map((m) => (
           <article class="panel metric-card">
-            <strong>{metric.value}</strong>
-            <span>{metric.label}</span>
+            <strong>{m.value}</strong>
+            <span>{m.label}</span>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section">
+    <!-- WHO -->
+    <section class="section section-stripe">
       <div class="container">
-        <p class="eyebrow">Warum ultramind.one</p>
-        <h2 class="section-title">Ein Lernsystem fuer Menschen, nicht fuer Schubladen.</h2>
+        <p class="eyebrow">Wer ich bin</p>
+        <h2 class="section-title">Drei Rollen. Eine Handschrift.</h2>
         <p class="section-lead">
-          Das Projekt verbindet Bildung, Design und Interaktion. Jede Einheit steht fuer einen
-          konkreten Intelligenzraum, bleibt aber Teil einer groesseren Reise.
+          Fossnomade ist Künstler, Builder und Kommentator in einem.
+          Je nach Kontext die passende Rolle — aber immer derselbe Drive.
         </p>
         <div class="grid-3 card-grid">
-          {pillars.map((pillar) => (
-            <article class="card value-card">
-              <h3>{pillar.title}</h3>
-              <p>{pillar.text}</p>
+          {personas.map((p) => (
+            <article class="card persona-card">
+              <span class="chip">{p.tag}</span>
+              <h3>{p.title}</h3>
+              <p>{p.text}</p>
+              <a href={p.link.href} class="card-link">{p.link.label} →</a>
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="section section-roadmap">
+    <!-- ECOSYSTEM -->
+    <section class="section">
       <div class="container">
-        <p class="eyebrow">Roadmap</p>
-        <h2 class="section-title">Alle acht Module in einem klaren Rollout.</h2>
-        <div class="roadmap-grid">
-          {roadmap.map((item) => (
-            <article class="card roadmap-card">
-              <div class="roadmap-head">
-                <span class="chip">Modul {item.id}</span>
-                <span class:list={['status-pill', item.state === 'Live' && 'status-live']}>
-                  {item.state}
-                </span>
+        <p class="eyebrow">Das Ecosystem</p>
+        <h2 class="section-title">Alles läuft. Alles connected.</h2>
+        <p class="section-lead">
+          Eigene Infrastruktur, eigener Music Server, eigene Community.
+          Das Ecosystem wächst mit jedem Sprint.
+        </p>
+        <div class="grid-4 card-grid">
+          {ecosystem.map((item) => (
+            <article class="card eco-card">
+              <div class="eco-head">
+                <span class="chip">{item.tag}</span>
+                <span class="status-pill">{item.status}</span>
               </div>
               <h3>{item.name}</h3>
-              <p>{item.note}</p>
+              <p>{item.desc}</p>
+              {item.href && (
+                <a href={item.href} target="_blank" rel="noopener" class="card-link">Öffnen →</a>
+              )}
             </article>
           ))}
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <!-- SERVICES PREVIEW -->
+    <section class="section section-stripe">
       <div class="container">
-        <p class="eyebrow">Template Vorlagen</p>
-        <h2 class="section-title">Wiederverwendbare Bausteine fuer schnellen Ausbau.</h2>
+        <p class="eyebrow">Services</p>
+        <h2 class="section-title">Was ich für dich bauen kann.</h2>
         <p class="section-lead">
-          Jede Vorlage folgt derselben Designlogik und kann pro Modul, Landing oder Kampagne adaptiert werden.
+          Meisterdienstleister für digitale Kreation. Ob Marke, Inhalt oder Technik —
+          ich liefere das Gesamtpaket oder den gezielten Build.
         </p>
         <div class="grid-3 card-grid">
-          {templateCards.map((template) => (
-            <article class="card template-card">
-              <h3>{template.name}</h3>
-              <p>{template.text}</p>
-              <div class="chip-row">
-                {template.tags.map((tag) => (
-                  <span class="chip">{tag}</span>
-                ))}
-              </div>
+          {services.map((s) => (
+            <article class="card service-card">
+              <h3>{s.label}</h3>
+              <p>{s.text}</p>
             </article>
           ))}
+        </div>
+        <div class="section-cta">
+          <a href="/services" class="btn btn-primary">Alle Services ansehen</a>
+          <a href="/contact" class="btn btn-ghost">Direkt anfragen</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-roadmap">
-      <div class="container">
-        <p class="eyebrow">Naechster Sprint</p>
-        <h2 class="section-title">So geht der Build in vier Schritten weiter.</h2>
-        <div class="timeline-grid">
-          {sprintPlan.map((item, index) => (
-            <article class="card timeline-card">
-              <span class="chip">Schritt {index + 1}</span>
-              <h3>{item.step}</h3>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
+    <!-- CTA -->
     <section class="section">
       <div class="container">
         <div class="panel cta-panel">
-          <p class="eyebrow">Launchbereit machen</p>
-          <h2>Du willst ultramind.one direkt produktiv ausrollen?</h2>
+          <p class="eyebrow">Let's Go</p>
+          <h2>Du hast ein Projekt. Ich hab Tools, Vision und einen Laptop auf 100%.</h2>
           <p>
-            Dann setzen wir als naechstes Domain, Inhalte, Modul 02 und den Hub-Rahmen final auf.
-            Danach ist die Plattform bereit fuer den kontinuierlichen Ausbau.
+            Illustration, Site-Build, Bot, Video-Edit oder alles auf einmal —
+            lass uns einen Sprint starten.
           </p>
-          <div class="hero-cta">
+          <div class="cta-actions">
             <a href="/contact" class="btn btn-primary">Kontakt aufnehmen</a>
-            <a href="/templates" class="btn btn-ghost">Templates ansehen</a>
+            <a href="/services" class="btn btn-ghost">Services ansehen</a>
           </div>
         </div>
       </div>
@@ -231,9 +235,7 @@ const sprintPlan = [
   align-items: start;
 }
 
-.hero-copy {
-  padding: 1rem 0;
-}
+.hero-copy { padding: 1rem 0; }
 
 .hero-cta {
   display: flex;
@@ -249,34 +251,58 @@ const sprintPlan = [
   margin-top: 1.2rem;
 }
 
-.hero-card {
-  padding: 1.35rem;
-}
+.hero-card { padding: 1.5rem; }
 
 .hero-card h2 {
   font-size: 1.7rem;
+  color: var(--ink);
   margin: 0.65rem 0 1rem;
 }
 
-.hero-list {
+.status-list {
+  list-style: none;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.55rem;
 }
 
-.hero-list li {
+.status-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.95rem;
+  color: var(--ink-soft);
+  padding-left: 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot.online {
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+.status-dot.active {
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(30, 232, 208, 0.5);
 }
 
 .hero-link {
   display: inline-block;
   margin-top: 1rem;
   font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--cyan);
 }
 
 .metric-grid {
   margin-top: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -288,116 +314,115 @@ const sprintPlan = [
 }
 
 .metric-card strong {
-  color: var(--ink);
+  color: var(--cyan);
   font-size: 1.45rem;
   font-family: var(--font-display);
 }
 
 .metric-card span {
   color: var(--ink-muted);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  font-family: var(--font-mono);
 }
 
-.card-grid {
-  margin-top: 1.35rem;
+.section-stripe {
+  background: rgba(30, 232, 208, 0.02);
+  border-top: 1px solid rgba(30, 232, 208, 0.07);
+  border-bottom: 1px solid rgba(30, 232, 208, 0.07);
 }
 
-.value-card h3,
-.template-card h3,
-.timeline-card h3,
-.roadmap-card h3 {
+.card-grid { margin-top: 1.35rem; }
+
+.persona-card,
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.persona-card h3,
+.service-card h3,
+.eco-card h3 {
   color: var(--ink);
-  font-size: 1.12rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
 }
 
-.value-card p,
-.template-card p,
-.timeline-card p,
-.roadmap-card p {
+.persona-card p,
+.service-card p,
+.eco-card p {
   font-size: 0.95rem;
   line-height: 1.68;
+  flex: 1;
 }
 
-.section-roadmap {
-  background: linear-gradient(180deg, rgba(255, 250, 243, 0.55), rgba(232, 222, 206, 0.26));
-  border-top: 1px solid rgba(141, 91, 51, 0.13);
-  border-bottom: 1px solid rgba(141, 91, 51, 0.13);
+.card-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-top: 0.4rem;
 }
 
-.roadmap-grid {
-  margin-top: 1.25rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
+.card-link:hover { color: var(--amber); }
 
-.roadmap-head {
+.eco-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.eco-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .status-pill {
-  border-radius: 999px;
-  border: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--ink-muted);
-  padding: 0.24rem 0.56rem;
-}
-
-.status-live {
-  border-color: rgba(47, 122, 79, 0.42);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
   color: var(--success);
-  background: rgba(47, 122, 79, 0.1);
+  background: rgba(34, 197, 94, 0.08);
+  white-space: nowrap;
 }
 
-.timeline-grid {
-  margin-top: 1.25rem;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
+.section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
 }
 
-.cta-panel {
-  padding: 2.2rem;
-}
+.cta-panel { padding: 2.2rem; }
 
 .cta-panel h2 {
-  margin: 0.7rem 0;
+  margin: 0.7rem 0 0.8rem;
   font-size: clamp(1.8rem, 3.5vw, 2.9rem);
   color: var(--ink);
 }
 
-.cta-panel p {
-  max-width: 720px;
+.cta-panel p { max-width: 720px; }
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 1020px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .timeline-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+  .hero-grid { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
-  .metric-grid,
-  .roadmap-grid,
-  .timeline-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-card,
-  .cta-panel {
-    padding: 1.25rem;
-  }
+  .cta-panel { padding: 1.25rem; }
 }
 </style>
