@@ -1,40 +1,26 @@
 # AGENTS.md
 
-## Scope & Tech Stack
-- Astro 6 static site, file-based routing under `src/pages/`.
-- Single-package repo. Use npm only (`package-lock.json` is authoritative).
-- Node runtime must satisfy `>=22.12.0` (`package.json` engines).
+## Source of Truth
+- Trust `package.json`, `astro.config.mjs`, `public/CNAME`, `.github/workflows/deploy.yml`, `tsconfig.json`, and the actual `.astro` files over `README.md`.
+- `README.md` is the Astro starter template; ignore it.
 
-## Critical Gotchas
+## Commands
+- Node must be `>=22.12.0`.
+- Run `npm install` before validation.
+- Run `npm run astro -- check` for type/content checks.
+- Run `npm run build` as the CI gate.
+- Use `npm run dev` for local work and `npm run preview` to verify the built site.
+- There is no lint or test script.
 
-| Issue | Impact | Fix |
-|-------|--------|-----|
-| Domain in **two places** | Deploy breaks if they mismatch | Update both `astro.config.mjs` (`site:`) AND `public/CNAME` together |
-| Nav links **duplicated** | Dead links if not synced | Update both `src/components/Nav.astro` AND `src/components/Footer.astro` |
-| `dist/` and `.astro/` are **generated** | Never hand-edit | These are rebuild artifacts |
+## Structure
+- Astro 6 static site with file-based routing in `src/pages/`.
+- Shared shell lives in `src/layouts/Layout.astro`, `src/components/Nav.astro`, `src/components/Footer.astro`, and `src/styles/global.css`.
+- `src/pages/about.astro`, `module.astro`, `templates.astro`, and `marketing-check.astro` still route but are legacy and unlinked.
+- Most page styling is inline in `.astro` files; there is no CMS or content-collection layer.
 
-## Required Command Order
-1. `npm install` (always first)
-2. `npm run astro -- check` (validation)
-3. `npm run build` (production)
-4. For local preview: `npm run preview`
-
-No test/lint scripts exist — verification is `npm run astro -- check && npm run build`.
-
-## Page Ownership
-- **Active (in nav):** `index`, `dev`, `media`, `services`, `contact`, `impressum`, `datenschutz`
-- **Archived (not in nav):** `module`, `templates`, `about`, `marketing-check` — legacy ultramind.one collab, leave as-is
-- **Shared:** `Layout.astro` (shell), `Nav.astro` + `Footer.astro` (UI), `global.css` (design tokens)
-
-## CI/Deployment
-- GitHub Pages: deploys on push to **`master`** (not `main`)
-- CI flow: Node 22 → `npm install` → `npm run build` → upload `dist/`
-- DNS: Alfahosting CNAME `web` → `[username].github.io`
-
-## Content Rules
-- Site copy is **German** — preserve language and legal structure
-- Contact form → `formsubmit.co` with `_captcha` disabled (spam risk, intentional)
-- Legal data: Alexander Solod, Nürnberger Land, Bayern — don't change
-
-## Reference
-- `CLAUDE.md` in this repo provides additional architecture context — read it first for detailed tech stack info.
+## Gotchas
+- `astro.config.mjs` and `public/CNAME` must both stay on `web.asfmedia.org`.
+- GitHub Pages deploys from `master` only: `npm install` -> `npm run build` -> publish `dist/`.
+- Nav links are duplicated in `Nav.astro` and `Footer.astro`; the mobile menu behavior is the inline script in `Nav.astro`.
+- The contact form posts to `formsubmit.co` and `_next` must point back to `https://web.asfmedia.org/contact?sent=1`.
+- Site copy is German, and the legal pages contain real identity/contact data; preserve their structure unless asked to change it.

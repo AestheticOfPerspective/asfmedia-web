@@ -1,34 +1,31 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file is secondary guidance for Claude Code. `AGENTS.md` is the repo source of truth.
 
-## Authoritative References
-- `AGENTS.md` in this repo is the source of truth for technical constraints — **read it first**. The notes below complement, not replace, it.
-- `README.md` is the unmodified Astro starter template; ignore it.
-- Config truth: `package.json`, `astro.config.mjs`, `.github/workflows/deploy.yml`.
+## Quick Facts
+- Astro 6 static site with file-based routing in `src/pages/`.
+- Trust `package.json`, `astro.config.mjs`, `public/CNAME`, `.github/workflows/deploy.yml`, `tsconfig.json`, and the actual `.astro` files over `README.md`.
+- `README.md` is the Astro starter template; ignore it.
+- Node must satisfy `>=22.12.0`.
 
 ## Commands
-- `npm install` — required before anything else.
-- `npm run dev` — dev server at `localhost:4321`.
-- `npm run build` — production build to `dist/`.
-- `npm run preview` — serve the built `dist/` locally.
-- `npm run astro -- check` — type/content validation (no lint/test scripts exist).
+- Run `npm install` first.
+- Use `npm run astro -- check` for validation.
+- Use `npm run build` for the CI gate.
+- Use `npm run dev` and `npm run preview` for local verification.
+- There are no lint or test scripts.
 
-## Architecture
-- Astro 6 static site, file-based routing under `src/pages/`.
-- **Active pages (in nav):** `index`, `dev`, `media`, `services`, `contact`, `impressum`, `datenschutz`.
-- **Archived pages (not in nav, still accessible):** `module`, `templates`, `about`, `marketing-check` — legacy ultramind.one collab content, leave as-is.
-- Shared shell: `src/layouts/Layout.astro` (site name = `ASFMedia`, dark theme-color, fonts, `lang="de"`).
-- Shared UI: `src/components/Nav.astro` (links: Start/Dev/Media/Services/Kontakt, CTA = "Hire Me"), `src/components/Footer.astro`.
-- Design tokens: `src/styles/global.css` — Cyberpunk Dharma dark theme. Key vars: `--void` (bg), `--cyan` (accent), `--amber` (secondary), `--ink` (text). Page-level styles are inline per `.astro` file.
+## Structure
+- Shared shell: `src/layouts/Layout.astro`, `src/components/Nav.astro`, `src/components/Footer.astro`, `src/styles/global.css`.
+- Primary nav is `Start`, `Dev`, `Media`, `Services`, `Kontakt`; `impressum` and `datenschutz` are footer-only.
+- `about`, `module`, `templates`, and `marketing-check` still route but are legacy and unlinked.
+- Most page styling is inline in the `.astro` files; there is no CMS/content collection layer.
 
 ## Deployment
-- GitHub Pages via `.github/workflows/deploy.yml`. Triggers on push to **`master`** (not `main`). Node 22 → `npm install` → `npm run build` → uploads `dist/`.
-- Custom domain `web.asfmedia.org` configured in **two** places that must match: `astro.config.mjs` (`site:`) and `public/CNAME`.
-- DNS on Alfahosting: CNAME record `web` → `[github-username].github.io` for the subdomain.
+- GitHub Pages deploys from `master` only.
+- `astro.config.mjs` and `public/CNAME` must both stay on `web.asfmedia.org`.
+- The contact form posts to `formsubmit.co` and relies on `_next` pointing back to the deployed site.
 
 ## Content
-- Site is for **ASFMedia / Fossnomade** — Creative Director, Illustrator, Developer, Commentary Guy.
-- Contact form uses formsubmit.co → `hello@asfmedia.org`. First submit triggers activation email to that address.
-- Legal pages (impressum, datenschutz): real data — Alexander Solod, Nürnberger Land, Bayern.
-- Site copy is German; preserve language and legal structure unless explicitly asked to change.
+- Site copy is German.
+- The legal pages contain real identity/contact data; preserve their structure unless asked to change it.
