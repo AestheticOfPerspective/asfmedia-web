@@ -3,5 +3,5 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://web.asfmedia.org',
+  site: 'https://asfmedia.b0x.store',
 });
