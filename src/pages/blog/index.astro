@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const postModules = import.meta.glob('../../data/blog/*.md', { eager: true });
+const posts = Object.values(postModules)
+  .map((mod) => mod)
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+
+function slugFromPath(mod) {
+  for (const [path, module] of Object.entries(postModules)) {
+    if (module === mod) return path.split('/').pop()?.replace('.md', '');
+  }
+  return '';
+}
+---
+
+<Layout title="Blog | ASFMedia" description="Gedanken zu Gaming, Streaming, Tech und Digital Dharma.">
+  <main class="page-shell">
+    <div class="container">
+      <section class="section">
+        <span class="eyebrow">Blog</span>
+        <h1 class="display-title">Gedanken,<br />Lore &amp; Updates</h1>
+        <p class="section-lead">
+          Stream-Highlights, Gaming-Talk, Tech-Notes und was sonst so im Edgerunner-Alltag passiert.
+        </p>
+
+        <div class="post-grid">
+          {posts.map((post) => (
+            <article class="card post-card">
+              <a href={`/blog/${slugFromPath(post)}`}>
+                <time class="post-date" datetime={post.frontmatter.date}>
+                  {new Date(post.frontmatter.date).toLocaleDateString('de-DE', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                  })}
+                </time>
+                <h2 class="post-title">{post.frontmatter.title}</h2>
+                <p class="post-excerpt">{post.frontmatter.description}</p>
+                <span class="chip">Weiterlesen →</span>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <div class="rss-hint">
+          <span class="chip">RSS Feed</span>
+          <p>Abonniere den <a href="/rss.xml">RSS Feed</a> für automatische Updates.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.4rem;
+    margin-top: 2.6rem;
+  }
+
+  .post-card a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .post-card:hover .post-title {
+    color: var(--cyan);
+  }
+
+  .post-excerpt {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .post-card .chip {
+    align-self: flex-start;
+    margin-top: 0.2rem;
+  }
+
+  .rss-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 3rem;
+    padding: 1.2rem;
+    background: var(--void-2);
+    border: 1px solid var(--cyan-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .rss-hint p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 640px) {
+    .post-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const postModules = import.meta.glob('../../data/blog/*.md', { eager: true });
+  return Object.entries(postModules).map(([path, mod]) => ({
+    params: { slug: path.split('/').pop()?.replace('.md', '') },
+    props: { post: mod },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, date, tags } = post.frontmatter;
+const Content = post.Content;
+---
+
+<Layout title={title} description={description}>
+  <main class="page-shell">
+    <div class="container">
+      <article class="blog-post section">
+        <nav class="blog-breadcrumb">
+          <a href="/blog">← Blog</a>
+        </nav>
+
+        <header class="post-header">
+          <time class="post-date" datetime={date}>
+            {new Date(date).toLocaleDateString('de-DE', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            })}
+          </time>
+          <h1 class="post-title">{title}</h1>
+          {tags && (
+            <div class="post-tags">
+              {tags.map((tag: string) => <span class="chip">{tag}</span>)}
+            </div>
+          )}
+        </header>
+
+        <div class="post-content">
+          <Content />
+        </div>
+      </article>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .blog-breadcrumb {
+    margin-bottom: 1rem;
+  }
+
+  .blog-breadcrumb a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+
+  .blog-breadcrumb a:hover {
+    color: var(--cyan);
+  }
+
+  .post-header {
+    margin-bottom: 2.4rem;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.1;
+    margin: 0.6rem 0 0.8rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .post-content {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+  }
+
+  .post-content h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin: 2rem 0 0.8rem;
+    line-height: 1.2;
+  }
+
+  .post-content h3 {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 1.6rem 0 0.6rem;
+  }
+
+  .post-content p {
+    margin-bottom: 1rem;
+  }
+
+  .post-content ul,
+  .post-content ol {
+    margin: 0.8rem 0;
+    padding-left: 1.4rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.4rem;
+  }
+
+  .post-content strong {
+    color: var(--ink);
+  }
+
+  .post-content code {
+    background: var(--void-3);
+    border-radius: 4px;
+    padding: 0.12rem 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+  }
+
+  .post-content a {
+    color: var(--cyan);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .post-content a:hover {
+    color: var(--amber);
+  }
+
+  .post-content blockquote {
+    border-left: 3px solid var(--cyan);
+    padding-left: 1rem;
+    margin: 1.4rem 0;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  .post-content img {
+    border-radius: var(--radius-sm);
+    margin: 1.4rem 0;
+  }
+</style>
